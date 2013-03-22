@@ -29,16 +29,36 @@ describe('client without token', function() {
 
   it('createClient', function() {
     client = makeClient({
+      dorianEndpoint: 'http://beta.indavelopment.com',
       lydianEndpoint: process.env.INDABA_TEST_ENDPOINT
     });
   });
 
   it('opportunities', function(done) {
-    client.get('/opportunities', {}, function(err, data) {
+    var request = {
+      path: '/opportunities',
+      cast: client.Opportunity
+    };
+    client.get(request, function(err, data) {
       assert.ok(data);
+      var opp = data[0];
+      assert.equal(opp.getUrl(), 'http://beta.indavelopment.com/opportunities/submission-time');
       done(err);
     });
   });
+
+  it('single opportunity', function(done) {
+    var request = {
+      path: '/opportunities/submission-time',
+      cast: client.Opportunity
+    };
+    client.get(request, function(err, opp) {
+      assert.ok(opp);
+      assert.equal(opp.getUrl(), 'http://beta.indavelopment.com/opportunities/submission-time');
+      done(err);
+    });
+  });
+
 });
 
 describe('client with token', function() {
@@ -46,14 +66,21 @@ describe('client with token', function() {
 
   it('createClient', function() {
     client = makeClient({
+      dorianEndpoint: 'http://beta.indavelopment.com',
       lydianEndpoint: process.env.INDABA_TEST_ENDPOINT,
       token: token
     });
   });
 
   it('whoami', function(done) {
-    client.get('/whoami', {access_token: token}, function(err, data) {
-      assert.ok(data);
+    var request = {
+      path: '/whoami',
+      query: {access_token: token},
+      cast: client.User
+    };
+    client.get(request, function(err, user) {
+      assert.ok(user);
+      console.log(user.profileUrl());
       done(err);
     });
   });
