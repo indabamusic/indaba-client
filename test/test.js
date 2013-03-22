@@ -27,7 +27,7 @@ describe('get a valid token', function() {
 describe('client without token', function() {
   var client;
 
-  it('createClient', function() {
+  before(function() {
     client = makeClient({
       dorianEndpoint: 'http://beta.indavelopment.com',
       lydianEndpoint: process.env.INDABA_TEST_ENDPOINT
@@ -41,8 +41,32 @@ describe('client without token', function() {
     };
     client.get(request, function(err, data) {
       assert.ok(data);
+      console.log("opps", data.totalRecords, data.length);
       var opp = data[0];
-      assert.equal(opp.getUrl(), 'http://beta.indavelopment.com/opportunities/submission-time');
+      assert.ok(opp.getUrl());
+      done(err);
+    });
+  });
+
+  it('some instruments', function(done) {
+    var request = {
+      path: '/instruments'
+    };
+    client.get(request, function(err, data) {
+      assert.ok(data);
+      assert.ok(data.totalRecords > data.length);
+      done(err);
+    });
+  });
+
+  it('all instruments', function(done) {
+    var request = {
+      path: '/instruments',
+      all: true
+    };
+    client.get(request, function(err, data) {
+      assert.ok(data);
+      assert.equal(data.totalRecords, data.length);
       done(err);
     });
   });
@@ -54,7 +78,7 @@ describe('client without token', function() {
     };
     client.get(request, function(err, opp) {
       assert.ok(opp);
-      assert.equal(opp.getUrl(), 'http://beta.indavelopment.com/opportunities/submission-time');
+      assert.ok(opp.getUrl());
       done(err);
     });
   });
@@ -73,15 +97,13 @@ describe('client with token', function() {
   });
 
   it('whoami', function(done) {
-    var request = {
-      path: '/whoami',
-      query: {access_token: token},
-      cast: client.User
-    };
-    client.get(request, function(err, user) {
+    client.whoami(function(err, user) {
       assert.ok(user);
-      console.log(user.profileUrl());
+      assert.ok(client.currentUser);
+      assert.equal(client.currentUser, user);
+      assert.ok(user.profileUrl());
       done(err);
     });
   });
+
 });

@@ -17,9 +17,14 @@ Client has our models:
 var opp = new client.Opportunity(opportunityJsonData);
 ```
 
-Get Request:
 
-* By specifying `cast` all records will be wrapped in Opportunity model
+
+
+## Get Request:
+
+* `path`: required URL path (`/opportunities/`)
+* `query`: object used to build query string
+* `cast`: data or datum will be cast to this class (`client.Opportunity`)
 
 ```js
 var opp = client.get({
@@ -33,3 +38,11 @@ var opp = client.get({
   console.log("opp phase: ", opp.getPhase());
 })
 ```
+
+
+## Post Request:
+
+* `path`: required URL path (`/opportunities/`)
+* `body`: payload object of post request
+* `cast`: data or datum will be cast to this class (`client.Opportunity`)
+
