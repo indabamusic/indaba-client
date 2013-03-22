@@ -1,5 +1,5 @@
 var assert = require('assert');
-var IndabaClient = require('../index');
+var makeClient = require('../index');
 
 // authenticate + token setup
 var token;
@@ -28,7 +28,7 @@ describe('client without token', function() {
   var client;
 
   it('createClient', function() {
-    client = new IndabaClient({
+    client = makeClient({
       lydianEndpoint: process.env.INDABA_TEST_ENDPOINT
     });
   });
@@ -45,7 +45,7 @@ describe('client with token', function() {
   var client;
 
   it('createClient', function() {
-    client = new IndabaClient({
+    client = makeClient({
       lydianEndpoint: process.env.INDABA_TEST_ENDPOINT,
       token: token
     });
