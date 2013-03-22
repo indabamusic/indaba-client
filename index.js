@@ -82,8 +82,7 @@ module.exports = function(ENV) {
       } else if (resp.body.status !== 'success') {
         cb(new Error("lydian says " + resp.body.status + ": " + resp.body.message));
       } else {
-        result = _cast(postConfig.cast, result);
-        cb(null, resp.body.data);
+        cb(null, _cast(postConfig.cast, resp.body.data));
       }
     });
   }
@@ -99,6 +98,59 @@ module.exports = function(ENV) {
       client.currentUser = user;
       cb(null, client.currentUser);
     });
+  };
+
+
+  client.followingTable = {},
+  client.followingList = [];
+
+  client.loadFollowing = function loadFollows(cb) {
+    if (!client.currentUser) cb(new Error('client.currentUser is required. Call client.whoami first.'));
+    var request = {
+      path: "/users/" + client.currentUser.slug + "/follows",
+      cast: client.User,
+      all: true
+    };
+    get(request, function(err, following) {
+      if (err) return cb(err);
+      following.forEach(function(user) {
+        client.followingTable[user.id] = user;
+        client.followingTable[user.slug] = user;
+        client.followingList.push(user);
+      });
+      cb(null, following);
+    });
+  };
+
+  client.follow = function follow(user, cb) {
+    var request = {
+      path: "/users/" + user.slug + "/follow"
+    };
+    post(request, function(err) {
+      if (err) {
+        // remove user from followTable + followList
+        // backbone collections would be nice here
+        return cb(err);
+      }
+      cb(null);
+    });
+    client.followingTable[user.id] = user;
+    client.followingTable[user.slug] = user;
+    client.followingList.push(user);
+  };
+
+  client.unfollow = function unfollow(user, cb) {
+    var request = {
+      path: "/users/" + user.slug + "/unfollow"
+    };
+    post(request, function(err) {
+      if (err) {
+        // readd user record if unfollow fails
+        return cb(err);
+      }
+      cb(null);
+    });
+    // remove user from followTable
   };
 
 

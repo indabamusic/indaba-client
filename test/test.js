@@ -10,6 +10,8 @@ var authenticate = require('indaba-auth')({
   clientSecret: process.env.INDABA_TEST_SECRET
 });
 
+var someUsers;
+
 describe('get a valid token', function() {
   it('login', function(done) {
     authenticate({
@@ -41,9 +43,20 @@ describe('client without token', function() {
     };
     client.get(request, function(err, data) {
       assert.ok(data);
-      console.log("opps", data.totalRecords, data.length);
       var opp = data[0];
       assert.ok(opp.getUrl());
+      done(err);
+    });
+  });
+
+  it('list users', function(done) {
+    var request = {
+      path: '/users',
+      cast: client.User
+    };
+    client.get(request, function(err, data) {
+      assert.ok(data);
+      someUsers = data;
       done(err);
     });
   });
@@ -59,7 +72,7 @@ describe('client without token', function() {
     });
   });
 
-  it('all instruments', function(done) {
+  it.skip('all instruments', function(done) {
     var request = {
       path: '/instruments',
       all: true
@@ -102,6 +115,37 @@ describe('client with token', function() {
       assert.ok(client.currentUser);
       assert.equal(client.currentUser, user);
       assert.ok(user.profileUrl());
+      done(err);
+    });
+  });
+
+  it('load following', function(done) {
+    client.loadFollowing(function(err, following) {
+      assert.ok(following);
+      assert.equal(client.followingList.length, following.length);
+      done(err);
+    });
+  });
+
+  it('ensure not following', function(done) {
+    var someUser = someUsers[0];
+    client.unfollow(someUser, function(err) {
+      done();
+    });
+  });
+
+  it('follow user', function(done) {
+    var someUser = someUsers[0];
+    var beforeLength = client.followingList.length;
+    client.follow(someUser, function(err) {
+      done(err);
+    });
+    assert.equal(client.followingList.length, beforeLength + 1);
+  });
+
+  it('unfollow', function(done) {
+    var someUser = someUsers[0];
+    client.unfollow(someUser, function(err) {
       done(err);
     });
   });
