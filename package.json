@@ -1,0 +1,18 @@
+{
+  "name": "indaba-client",
+  "version": "0.0.0",
+  "description": "ERROR: No README.md file found!",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter spec --bail --timeout 8000"
+  },
+  "repository": "",
+  "author": "",
+  "license": "BSD",
+  "devDependencies": {
+    "mocha": "~1.8.2"
+  },
+  "dependencies": {
+    "superagent": "~0.13.0"
+  }
+}
