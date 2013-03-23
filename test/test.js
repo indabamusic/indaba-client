@@ -137,12 +137,10 @@ describe('client with token', function() {
   it('follow user', function(done) {
     var someUser = someUsers[0];
     var beforeLength = client.followingCollection.length;
-    console.log('bf', beforeLength, client.followingCollection.length);
     client.follow(someUser, function(err) {
+      assert.equal(client.followingCollection.length, beforeLength + 1);
       done(err);
     });
-    console.log('after', beforeLength, client.followingCollection.length);
-    assert.equal(client.followingCollection.length, beforeLength + 1);
   });
 
   it('unfollow', function(done) {
@@ -151,7 +149,7 @@ describe('client with token', function() {
     client.unfollow(someUser, function(err) {
       done(err);
     });
-    assert.equal(client.followingCollection.length, beforeLength + 1);
+    assert.equal(client.followingCollection.length, beforeLength - 1);
   });
 
 });

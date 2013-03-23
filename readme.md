@@ -46,3 +46,8 @@ var opp = client.get({
 * `body`: payload object of post request
 * `cast`: data or datum will be cast to this class (`client.Opportunity`)
 
+
+## Roadmap:
+
+* client.startSession() -- loads all requisite data for user: follows, votes, entries, submissions, etc.
+* emit events -- maybe use the fancy array, etc.

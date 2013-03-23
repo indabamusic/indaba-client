@@ -122,6 +122,7 @@ module.exports = function(ENV) {
     var request = {
       path: "/users/" + user.slug + "/follow"
     };
+    client.followingCollection.add(user);
     post(request, function(err) {
       if (err) {
         client.followingCollection.remove(user);
@@ -129,22 +130,17 @@ module.exports = function(ENV) {
       }
       cb(null);
     });
-    client.followingCollection.add(user);
   };
 
   client.unfollow = function unfollow(user, cb) {
     var request = {
       path: "/users/" + user.slug + "/unfollow"
     };
+    client.followingCollection.remove(user);
     post(request, function(err) {
-      if (err) {
-        // readd user record if unfollow fails
-        client.followingCollection.add(user);
-        return cb(err);
-      }
+      if (err) return cb(err);
       cb(null);
     });
-    client.followingCollection.remove(user);
   };
 
 
@@ -156,15 +152,15 @@ module.exports = function(ENV) {
   // Util
   // ----
 
-  function _cast(model, data) {
-    if (!model) return data;
+  function _cast(Model, data) {
+    if (!Model) return data;
     if (Array.isArray(data)) {
       return data.map(function(datum) {
-        return new model(datum);
+        return new Model(datum);
       });
     }
     else {
-      return new model(data);
+      return new Model(data);
     }
   }
 
