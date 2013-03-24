@@ -61,3 +61,6 @@ export INDABA_TEST_TOKEN='xxxx'
 
 * client.startSession() -- loads all requisite data for user: follows, votes, entries, submissions, etc.
 * emit events -- maybe use the fancy array, etc.
+* fancy array should be able to cast items on add
+
+* test server should provide canned responses for fast testing

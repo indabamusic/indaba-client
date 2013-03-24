@@ -1,31 +1,37 @@
 var assert = require('assert');
 var makeClient = require('../index');
 
+var token = process.env.INDABA_TEST_TOKEN;
+var client = makeClient({
+  dorianEndpoint: 'http://beta.indavelopment.com',
+  lydianEndpoint: process.env.INDABA_TEST_ENDPOINT,
+  token: token
+});
+
+var someUser;
+
+before(function(done) {
+
+  var request = {
+    path: '/users',
+    cast: client.User
+  };
+  client.get(request, function(err, data) {
+    someUser = data[0];
+    assert.ok(someUser);
+    ensureNotFollowing();
+  });
+
+  function ensureNotFollowing() {
+    client.unfollow(someUser, function(err) {
+      done();
+    });
+  }
+});
+
 describe('following', function() {
-  var client;
-  var someUsers;
-  var token = process.env.INDABA_TEST_TOKEN;
 
-  it('createClient', function() {
-    client = makeClient({
-      dorianEndpoint: 'http://beta.indavelopment.com',
-      lydianEndpoint: process.env.INDABA_TEST_ENDPOINT,
-      token: token
-    });
-  });
-  it('list users', function(done) {
-    var request = {
-      path: '/users',
-      cast: client.User
-    };
-    client.get(request, function(err, data) {
-      assert.ok(data);
-      someUsers = data;
-      done(err);
-    });
-  });
-
-  it('whoami', function(done) {
+  it('requires whoami first', function(done) {
     client.whoami(function(err, user) {
       assert.ok(user);
       assert.ok(client.currentUser);
@@ -35,7 +41,7 @@ describe('following', function() {
     });
   });
 
-  it('load following', function(done) {
+  it('loads following', function(done) {
     client.loadFollowing(function(err, following) {
       assert.ok(following);
       assert.equal(client.following.length, following.length);
@@ -43,15 +49,7 @@ describe('following', function() {
     });
   });
 
-  it('ensure not following', function(done) {
-    var someUser = someUsers[0];
-    client.unfollow(someUser, function(err) {
-      done();
-    });
-  });
-
-  it('follow user', function(done) {
-    var someUser = someUsers[0];
+  it('follow adds user to following', function(done) {
     var beforeLength = client.following.length;
     client.follow(someUser, function(err) {
       assert.equal(client.following.length, beforeLength + 1);
@@ -59,8 +57,7 @@ describe('following', function() {
     });
   });
 
-  it('unfollow', function(done) {
-    var someUser = someUsers[0];
+  it('unfollow removes user from following', function(done) {
     var beforeLength = client.following.length;
     client.unfollow(someUser, function(err) {
       done(err);
