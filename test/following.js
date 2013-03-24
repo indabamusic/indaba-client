@@ -1,7 +1,7 @@
 var assert = require('assert');
 var makeClient = require('../index');
 
-describe('client with token', function() {
+describe('following', function() {
   var client;
   var someUsers;
   var token = process.env.INDABA_TEST_TOKEN;

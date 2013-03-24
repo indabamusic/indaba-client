@@ -47,6 +47,16 @@ var opp = client.get({
 * `cast`: data or datum will be cast to this class (`client.Opportunity`)
 
 
+## Testing:
+
+Get a valid token + endpoint combo and add these to your .bash_profile:
+
+```
+export INDABA_TEST_ENDPOINT='https://lydian.indavelopment.com'
+export INDABA_TEST_TOKEN='xxxx'
+```
+
+
 ## Roadmap:
 
 * client.startSession() -- loads all requisite data for user: follows, votes, entries, submissions, etc.

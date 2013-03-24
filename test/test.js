@@ -1,32 +1,11 @@
 var assert = require('assert');
 var makeClient = require('../index');
 
-// authenticate + token setup
-var token;
-
-var authenticate = require('indaba-auth')({
-  lydianEndpoint: process.env.INDABA_TEST_ENDPOINT,
-  clientId: process.env.INDABA_TEST_CLIENT,
-  clientSecret: process.env.INDABA_TEST_SECRET
-});
-
+var token = process.env.INDABA_TEST_TOKEN;
 var someUsers;
 
-describe('get a valid token', function() {
-  it('login', function(done) {
-    authenticate({
-      username: process.env.INDABA_TEST_USERNAME,
-      password: process.env.INDABA_TEST_PASSWORD,
-      grant_type: 'password'
-    }, function(err, t) {
-      token = t;
-      assert.ok(token);
-      done(err);
-    });
-  });
-});
 
-describe('client without token', function() {
+describe('client', function() {
   var client;
 
   before(function() {
@@ -98,7 +77,7 @@ describe('client without token', function() {
 
 });
 
-describe('client with token', function() {
+describe('authenticated client', function() {
   var client;
 
   it('createClient', function() {
