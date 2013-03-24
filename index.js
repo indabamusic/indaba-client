@@ -46,6 +46,8 @@ module.exports = function(ENV) {
     });
   }
 
+  // getAll
+  // ------
   function getAll(getConfig, cb) {
     getConfig.all = false;
     getConfig.query = getConfig.query || {};
@@ -89,6 +91,8 @@ module.exports = function(ENV) {
   }
 
 
+  // whoami
+  // ------
   client.whoami = function whoami(cb) {
     var request = {
       path: '/whoami',
@@ -102,6 +106,12 @@ module.exports = function(ENV) {
   };
 
 
+
+  /**
+   * client.following
+   *
+   * stores following for current user
+   */
   client.following = array();
   // instead of using the `cast` option below,
   // we could also specify `castItemsTo` on the following array
@@ -127,12 +137,11 @@ module.exports = function(ENV) {
     var request = {
       path: "/users/" + user.slug + "/follow"
     };
-    client.following.push(user);
     post(request, function(err) {
       if (err) {
-        client.following.findAndRemove(user);
         return cb(err);
       }
+      client.following.push(user);
       cb(null);
     });
   };
@@ -141,9 +150,44 @@ module.exports = function(ENV) {
     var request = {
       path: "/users/" + user.slug + "/unfollow"
     };
-    client.following.findAndRemove(user);
     post(request, function(err) {
       if (err) return cb(err);
+      client.following.findAndRemove(user);
+      cb(null);
+    });
+  };
+
+
+  /**
+   * enteredOpportunities
+   *
+   */
+
+  client.enteredOpportunities = array();
+  client.enteredOpportunities.castItemsTo(client.Opportunity);
+
+  client.loadEnteredOpportunities = function(cb) {
+    var request = {
+      path: "/whoami/entered_opportunities",
+      cast: client.Opportunity,
+      all: true
+    };
+    get(request, function(err, data) {
+      if (err) return cb(err);
+      data.forEach(function(item) {
+        client.enteredOpportunities.push(item);
+      });
+      cb(null, client.enteredOpportunities);
+    });
+  };
+
+  client.enterOpportunity = function(opp, cb) {
+    var request = {
+      path: "/opportunities/" + opp.slug + "/enter",
+    };
+    post(request, function(err) {
+      if (err) return cb(err);
+      client.enteredOpportunities.push(opp);
       cb(null);
     });
   };

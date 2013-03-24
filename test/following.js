@@ -61,9 +61,9 @@ describe('following', function() {
   it('unfollow removes user from following', function(done) {
     var beforeLength = client.following.length;
     client.unfollow(someUser, function(err) {
+      assert.equal(client.following.length, beforeLength - 1);
       done(err);
     });
-    assert.equal(client.following.length, beforeLength - 1);
   });
 
 });
