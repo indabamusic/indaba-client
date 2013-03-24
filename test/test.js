@@ -119,37 +119,4 @@ describe('client with token', function() {
     });
   });
 
-  it('load following', function(done) {
-    client.loadFollowing(function(err, following) {
-      assert.ok(following);
-      assert.equal(client.followingCollection.length, following.length);
-      done(err);
-    });
-  });
-
-  it('ensure not following', function(done) {
-    var someUser = someUsers[0];
-    client.unfollow(someUser, function(err) {
-      done();
-    });
-  });
-
-  it('follow user', function(done) {
-    var someUser = someUsers[0];
-    var beforeLength = client.followingCollection.length;
-    client.follow(someUser, function(err) {
-      assert.equal(client.followingCollection.length, beforeLength + 1);
-      done(err);
-    });
-  });
-
-  it('unfollow', function(done) {
-    var someUser = someUsers[0];
-    var beforeLength = client.followingCollection.length;
-    client.unfollow(someUser, function(err) {
-      done(err);
-    });
-    assert.equal(client.followingCollection.length, beforeLength - 1);
-  });
-
 });

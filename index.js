@@ -1,5 +1,5 @@
-var superagent = require('superagent'),
-    makeCollection = require('./lib/collection');
+var superagent = require('superagent');
+var array = require('array.js');
 
 module.exports = function(ENV) {
   if (!ENV || !ENV.lydianEndpoint) throw new Error("lydianEndpoint is required");
@@ -102,9 +102,9 @@ module.exports = function(ENV) {
   };
 
 
-  client.followingCollection = makeCollection();
+  client.following = array();
 
-  client.loadFollowing = function loadFollows(cb) {
+  client.loadFollowing = function loadFollowing(cb) {
     if (!client.currentUser) cb(new Error('client.currentUser is required. Call client.whoami first.'));
     var request = {
       path: "/users/" + client.currentUser.slug + "/follows",
@@ -113,8 +113,8 @@ module.exports = function(ENV) {
     };
     get(request, function(err, following) {
       if (err) return cb(err);
-      client.followingCollection.add(following);
-      cb(null, following);
+      client.following.push(following);
+      cb(null, client.following);
     });
   };
 
@@ -122,10 +122,10 @@ module.exports = function(ENV) {
     var request = {
       path: "/users/" + user.slug + "/follow"
     };
-    client.followingCollection.add(user);
+    client.following.push(user);
     post(request, function(err) {
       if (err) {
-        client.followingCollection.remove(user);
+        client.following.findAndRemove(user);
         return cb(err);
       }
       cb(null);
@@ -136,7 +136,7 @@ module.exports = function(ENV) {
     var request = {
       path: "/users/" + user.slug + "/unfollow"
     };
-    client.followingCollection.remove(user);
+    client.following.findAndRemove(user);
     post(request, function(err) {
       if (err) return cb(err);
       cb(null);

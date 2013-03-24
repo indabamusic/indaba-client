@@ -13,6 +13,7 @@
     "mocha": "~1.8.2"
   },
   "dependencies": {
-    "superagent": "~0.13.0"
+    "superagent": "~0.13.0",
+    "array.js": "git://github.com/stereosteve/array.git#findAndRemove"
   }
 }
