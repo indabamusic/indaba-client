@@ -53,6 +53,7 @@ describe('following', function() {
     var beforeLength = client.following.length;
     client.follow(someUser, function(err) {
       assert.equal(client.following.length, beforeLength + 1);
+      assert.ok(client.following[0] instanceof client.User);
       done(err);
     });
   });

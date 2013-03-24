@@ -103,6 +103,9 @@ module.exports = function(ENV) {
 
 
   client.following = array();
+  // instead of using the `cast` option below,
+  // we could also specify `castItemsTo` on the following array
+  //   client.following.castItemsTo(client.User);
 
   client.loadFollowing = function loadFollowing(cb) {
     if (!client.currentUser) cb(new Error('client.currentUser is required. Call client.whoami first.'));
@@ -113,7 +116,9 @@ module.exports = function(ENV) {
     };
     get(request, function(err, following) {
       if (err) return cb(err);
-      client.following.push(following);
+      following.forEach(function(item) {
+        client.following.push(item);
+      });
       cb(null, client.following);
     });
   };
