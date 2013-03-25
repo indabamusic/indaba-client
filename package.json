@@ -14,6 +14,6 @@
   },
   "dependencies": {
     "superagent": "~0.13.0",
-    "array.js": "git://github.com/stereosteve/array.git"
+    "array.js": "~0.2.0"
   }
 }

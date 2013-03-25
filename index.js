@@ -113,9 +113,6 @@ module.exports = function(ENV) {
    * stores following for current user
    */
   client.following = array();
-  // instead of using the `cast` option below,
-  // we could also specify `castItemsTo` on the following array
-  //   client.following.castItemsTo(client.User);
 
   client.loadFollowing = function loadFollowing(cb) {
     if (!client.currentUser) cb(new Error('client.currentUser is required. Call client.whoami first.'));
@@ -152,7 +149,9 @@ module.exports = function(ENV) {
     };
     post(request, function(err) {
       if (err) return cb(err);
-      client.following.findAndRemove(user);
+      client.following = client.following.reject(function(u) {
+        return u.id === user.id;
+      });
       cb(null);
     });
   };
@@ -164,7 +163,6 @@ module.exports = function(ENV) {
    */
 
   client.enteredOpportunities = array();
-  client.enteredOpportunities.castItemsTo(client.Opportunity);
 
   client.loadEnteredOpportunities = function(cb) {
     var request = {
@@ -183,7 +181,7 @@ module.exports = function(ENV) {
 
   client.enterOpportunity = function(opp, cb) {
     var request = {
-      path: "/opportunities/" + opp.slug + "/enter",
+      path: "/opportunities/" + opp.slug + "/enter"
     };
     post(request, function(err) {
       if (err) return cb(err);
