@@ -1,7 +1,7 @@
 {
   "name": "indaba-client",
-  "version": "0.0.0",
-  "description": "ERROR: No README.md file found!",
+  "version": "0.0.1",
+  "description": "JavaScript client for the Indaba Music SDK",
   "main": "index.js",
   "scripts": {
     "test": "mocha --reporter spec --bail"
