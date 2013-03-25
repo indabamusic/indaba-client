@@ -7,6 +7,6 @@ app.get('/users', function(req, resp) {
   resp.json(data);
 });
 
-var port = 9999;
+var port = process.env.INDABA_TEST_PORT;
 app.listen(port);
 console.log('test server on ' + port);

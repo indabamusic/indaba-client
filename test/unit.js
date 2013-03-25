@@ -1,10 +1,12 @@
+var port = process.env.INDABA_TEST_PORT = 13352;
+
 var assert = require('assert');
 var testServer = require('./fixtures/server');
 
 
 var client = require('../index')({
   dorianEndpoint: 'http://beta.indavelopment.com',
-  lydianEndpoint: 'http://localhost:9999',
+  lydianEndpoint: 'http://localhost:' + port,
   token: 'test-token'
 });
 
