@@ -72,3 +72,25 @@ describe('following', function() {
   });
 
 });
+
+describe('followers', function() {
+
+  it('requires whoami first', function(done) {
+    client.whoami(function(err, user) {
+      assert.ok(user);
+      assert.ok(client.currentUser);
+      assert.equal(client.currentUser, user);
+      assert.ok(user.profileUrl());
+      done(err);
+    });
+  });
+
+  it('loads followers', function(done) {
+    client.loadFollowers(function(err, data) {
+      var datum = data[0];
+      assert.ok(client.isFollowedBy(datum));
+      done(err);
+    });
+  });
+
+});

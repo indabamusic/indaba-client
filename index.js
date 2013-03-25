@@ -163,6 +163,28 @@ module.exports = function(ENV) {
   };
 
 
+  client.followers = array();
+  client.loadFollowers = function(cb) {
+    if (!client.currentUser) cb(new Error('client.currentUser is required. Call client.whoami first.'));
+    var request = {
+      path: "/users/" + client.currentUser.slug + "/followers",
+      cast: client.User,
+      all: true
+    };
+    get(request, function(err, data) {
+      if (err) return cb(err);
+      data.forEach(function(item) {
+        client.followers.push(item);
+      });
+      cb(null, client.followers);
+    });
+  };
+  client.isFollowedBy = function(user) {
+    return !!client.followers.find(function(u) {
+      return u.id === user.id;
+    });
+  };
+
   /**
    * enteredOpportunities
    *
