@@ -62,10 +62,9 @@ describe('whoami', function() {
 
 describe('client.loadFollowing', function() {
   it('populates client.following', function(done) {
-    client.loadFollowing(function(err, following) {
+    client.loadFollowing(function(err) {
       assert.ifError(err);
-      assert.ok(following);
-      assert.equal(client.following.length, following.length);
+      assert.ok(client.following.length > 0);
       done();
     });
   });
@@ -107,9 +106,9 @@ describe('client.unfollow', function() {
 
 describe('client.loadFollowers', function() {
   it('populates client.followers', function(done) {
-    client.loadFollowers(function(err, data) {
+    client.loadFollowers(function(err) {
       assert.ifError(err);
-      var datum = data[0];
+      var datum = client.followers[0];
       assert.ok(client.isFollowedBy(datum));
       done();
     });
@@ -119,8 +118,9 @@ describe('client.loadFollowers', function() {
 
 describe('client.loadEnteredOpportunities', function() {
   it('populates client.enteredOpportunities', function(done) {
-    client.loadEnteredOpportunities(function(err, opps) {
+    client.loadEnteredOpportunities(function(err) {
       assert.ifError(err);
+      assert.ok(client.enteredOpportunities.length > 0);
       done();
     });
   });

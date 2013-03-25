@@ -126,7 +126,7 @@ module.exports = function(ENV) {
       following.forEach(function(item) {
         client.following.push(item);
       });
-      cb(null, client.following);
+      cb(null);
     });
   };
 
@@ -176,7 +176,7 @@ module.exports = function(ENV) {
       data.forEach(function(item) {
         client.followers.push(item);
       });
-      cb(null, client.followers);
+      cb(null);
     });
   };
   client.isFollowedBy = function(user) {
@@ -203,7 +203,7 @@ module.exports = function(ENV) {
       data.forEach(function(item) {
         client.enteredOpportunities.push(item);
       });
-      cb(null, client.enteredOpportunities);
+      cb(null);
     });
   };
 
