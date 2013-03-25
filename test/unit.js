@@ -8,14 +8,16 @@ var testServer = require('./fixtures/server');
 var client;
 var fixture = {
   users: require('./fixtures/users').data,
-  opportunities: require('./fixtures/opportunities').data
+  opportunities: require('./fixtures/opportunities').data,
+  submissions: require('./fixtures/submissions').data
 };
 
 beforeEach(function(done) {
   client = indabaClient({
     dorianEndpoint: 'http://beta.indavelopment.com',
     lydianEndpoint: 'http://localhost:' + port,
-    token: 'test-token'
+    token: 'test-token',
+    facebookToken: 'facebook-token'
   });
   client.whoami(done);
 });
@@ -136,6 +138,46 @@ describe('client.enterOpportunity', function() {
       assert.ifError(err);
       assert.equal(client.enteredOpportunities.length, 1);
       assert.ok(client.isEntered(opp));
+      done();
+    });
+  });
+});
+
+
+describe('client.loadVotedSubmissions', function() {
+  it('populates client.votedSubmissions', function(done) {
+    client.loadVotedSubmissions(function(err) {
+      assert.ifError(err);
+      assert.ok(client.votedSubmissions);
+      done();
+    });
+  });
+});
+
+describe('client.vote', function() {
+  var sub = fixture.submissions[0];
+  it('adds submission to client.votedSubmissions', function(done) {
+    assert.equal(client.votedSubmissions.length, 0);
+    client.vote(sub, function(err) {
+      assert.ifError(err);
+      assert.equal(client.votedSubmissions.length, 1);
+      done();
+    });
+  });
+});
+
+describe('client.unvote', function() {
+  var sub = fixture.submissions[0];
+  beforeEach(function(done) {
+    client.vote(sub, function(err) {
+      done(err);
+    });
+  });
+  it('removes submission to client.votedSubmissions', function(done) {
+    assert.equal(client.votedSubmissions.length, 1);
+    client.unvote(sub, function(err) {
+      assert.ifError(err);
+      assert.equal(client.votedSubmissions.length, 0);
       done();
     });
   });

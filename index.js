@@ -225,6 +225,60 @@ module.exports = function(ENV) {
   };
 
 
+  /**
+   * Voting
+   *
+   */
+
+  client.votedSubmissions = array();
+
+  client.loadVotedSubmissions = function(cb) {
+    var request = {
+      path: "/whoami/voted_submissions",
+      cast: client.Submission,
+      all: true
+    };
+    get(request, function(err, data) {
+      data.forEach(function(item) {
+        client.votedSubmissions.push(item);
+      });
+      cb(null);
+    });
+  };
+
+  client.vote = function(submission, cb) {
+    if (!ENV.facebookToken) return cb(new Error("client.ENV.facebookToken is required"));
+    var request = {
+      path: "/submissions/" + submission.id + "/vote",
+      body: {
+        facebook_token: client.ENV.facebookToken
+      }
+    };
+    post(request, function(err) {
+      if (err) return cb(err);
+      client.votedSubmissions.push(submission);
+      cb(null);
+    });
+  };
+
+  client.unvote = function(submission, cb) {
+    if (!ENV.facebookToken) return cb(new Error("client.ENV.facebookToken is required"));
+    var request = {
+      path: "/submissions/" + submission.id + "/unvote",
+      body: {
+        facebook_token: client.ENV.facebookToken
+      }
+    };
+    post(request, function(err) {
+      if (err) return cb(err);
+      client.votedSubmissions = client.votedSubmissions.reject(function(s) {
+        return s.id === submission.id;
+      });
+      cb(null);
+    });
+  };
+
+
   // Public Interface
   // ----------------
   return client;

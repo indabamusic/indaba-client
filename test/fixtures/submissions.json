@@ -1,0 +1,1007 @@
+{
+  "status": "success",
+  "message": null,
+  "data": [
+    {
+      "id": "90c623b2-8c1c-11e2-8736-12313b083ca7",
+      "created_at": "2013-03-13T20:28:29+00:00",
+      "voter_count": 0,
+      "user": {
+        "id": "555297a4-28f6-11e2-97e3-1231390fe2d4",
+        "slug": "042561822",
+        "name": "ARK",
+        "image_urls": {
+          "tiny": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/2979/profile_tiny.png",
+          "detail": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/2979/profile_detail.png",
+          "profile": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/2979/profile_profile.png"
+        },
+        "location_country_code": "US",
+        "location_city": "NYC",
+        "location_state": "1",
+        "account_type": {
+          "name": "Pro",
+          "privileges": "pro"
+        },
+        "birthday": null,
+        "member_since": "2012-11-07T16:15:30+00:00"
+      },
+      "opportunity": {
+        "id": "bc9fae4a-3014-11e2-837e-1231390fe2d4"
+      },
+      "name": "Ghouls 'N Ghosts Poltergeist Mix",
+      "description": null,
+      "waveform_url": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/waveform/3373/Ghouls 'N Ghosts Poltergeist Mix_waveform.png",
+      "preview_url": "https://lydian.indavelopment.com/submissions/90c623b2-8c1c-11e2-8736-12313b083ca7/preview",
+      "duration": 279640,
+      "listen_count": 8,
+      "play_count": 99,
+      "comment_count": 0,
+      "processing_job_id": "80d04d19-bc00-44cd-8952-6cdb7168fa52",
+      "playlist": {
+        "id": "349ac902-8c1d-11e2-9fcc-12313d02607e"
+      },
+      "rank": 20
+    },
+    {
+      "id": "87d19e62-8c1c-11e2-8736-12313b083ca7",
+      "created_at": "2013-03-13T20:28:14+00:00",
+      "voter_count": 0,
+      "user": {
+        "id": "8f82c238-380e-11e2-b06d-1231390fe2d4",
+        "slug": "871865135",
+        "name": "A K",
+        "image_urls": {
+          "tiny": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/3159/577136_891837628511_1141555044_n_tiny.png",
+          "detail": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/3159/577136_891837628511_1141555044_n_detail.png",
+          "profile": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/3159/577136_891837628511_1141555044_n_profile.png"
+        },
+        "location_country_code": "US",
+        "location_city": "Brooklyn",
+        "location_state": "NY",
+        "account_type": {
+          "name": "Basic",
+          "privileges": "basic"
+        },
+        "birthday": null,
+        "member_since": "2012-11-26T21:16:37+00:00"
+      },
+      "opportunity": {
+        "id": "bc9fae4a-3014-11e2-837e-1231390fe2d4"
+      },
+      "name": "mobile",
+      "description": "Roman Rofalski - piano, Johannes Felscher - bass, AK - drums",
+      "waveform_url": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/waveform/3372/mobile_waveform.png",
+      "preview_url": "https://lydian.indavelopment.com/submissions/87d19e62-8c1c-11e2-8736-12313b083ca7/preview",
+      "duration": 462276,
+      "listen_count": 6,
+      "play_count": 40,
+      "comment_count": 0,
+      "processing_job_id": "70dba139-5cce-4fcd-8136-872516fee92f",
+      "playlist": {
+        "id": "31edbfd4-8c1d-11e2-9fcc-12313d02607e"
+      },
+      "rank": 20
+    },
+    {
+      "id": "778d7f44-8c1c-11e2-8736-12313b083ca7",
+      "created_at": "2013-03-13T20:27:46+00:00",
+      "voter_count": 1,
+      "user": {
+        "id": "555297a4-28f6-11e2-97e3-1231390fe2d4",
+        "slug": "042561822",
+        "name": "ARK",
+        "image_urls": {
+          "tiny": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/2979/profile_tiny.png",
+          "detail": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/2979/profile_detail.png",
+          "profile": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/2979/profile_profile.png"
+        },
+        "location_country_code": "US",
+        "location_city": "NYC",
+        "location_state": "1",
+        "account_type": {
+          "name": "Pro",
+          "privileges": "pro"
+        },
+        "birthday": null,
+        "member_since": "2012-11-07T16:15:30+00:00"
+      },
+      "opportunity": {
+        "id": "bc9fae4a-3014-11e2-837e-1231390fe2d4"
+      },
+      "name": "01 Acid Cow (Erol Alkan Re-edit)",
+      "description": null,
+      "waveform_url": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/waveform/3371/01 Acid Cow (Erol Alkan Re-edit)_waveform.png",
+      "preview_url": "https://lydian.indavelopment.com/submissions/778d7f44-8c1c-11e2-8736-12313b083ca7/preview",
+      "duration": 271647,
+      "listen_count": 8,
+      "play_count": 29,
+      "comment_count": 0,
+      "processing_job_id": "add5c138-d9ed-4764-a3bf-fa0b48de7f50",
+      "playlist": {
+        "id": "18399aea-8c1d-11e2-9fcc-12313d02607e"
+      },
+      "rank": 4
+    },
+    {
+      "id": "4bf32da2-8c1c-11e2-8736-12313b083ca7",
+      "created_at": "2013-03-13T20:26:33+00:00",
+      "voter_count": 2,
+      "user": {
+        "id": "5c4390d8-9a67-11df-8c2a-1231390b2657",
+        "slug": "085959070",
+        "name": "Peter Swan",
+        "image_urls": {
+          "tiny": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/3280/Photo on 2-1-12 at 3.33 PM_tiny.png",
+          "detail": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/3280/Photo on 2-1-12 at 3.33 PM_detail.png",
+          "profile": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/3280/Photo on 2-1-12 at 3.33 PM_profile.png"
+        },
+        "location_country_code": "US",
+        "location_city": "NYC",
+        "location_state": "New York",
+        "account_type": {
+          "name": "Pro",
+          "privileges": "pro"
+        },
+        "birthday": "1982-02-28",
+        "member_since": "2009-11-23T19:01:25+00:00"
+      },
+      "opportunity": {
+        "id": "bc9fae4a-3014-11e2-837e-1231390fe2d4"
+      },
+      "name": "10 Black Trees",
+      "description": null,
+      "waveform_url": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/waveform/3370/10 Black Trees_waveform.png",
+      "preview_url": "https://lydian.indavelopment.com/submissions/4bf32da2-8c1c-11e2-8736-12313b083ca7/preview",
+      "duration": 351763,
+      "listen_count": 11,
+      "play_count": 35,
+      "comment_count": 0,
+      "processing_job_id": "855de6d9-e755-4596-948a-3948220f1d59",
+      "playlist": {
+        "id": "ee5873f4-8c1c-11e2-9fcc-12313d02607e"
+      },
+      "rank": 1
+    },
+    {
+      "id": "2f0b0f20-8c1c-11e2-8736-12313b083ca7",
+      "created_at": "2013-03-13T20:25:45+00:00",
+      "voter_count": 1,
+      "user": {
+        "id": "5c4390d8-9a67-11df-8c2a-1231390b2657",
+        "slug": "085959070",
+        "name": "Peter Swan",
+        "image_urls": {
+          "tiny": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/3280/Photo on 2-1-12 at 3.33 PM_tiny.png",
+          "detail": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/3280/Photo on 2-1-12 at 3.33 PM_detail.png",
+          "profile": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/3280/Photo on 2-1-12 at 3.33 PM_profile.png"
+        },
+        "location_country_code": "US",
+        "location_city": "NYC",
+        "location_state": "New York",
+        "account_type": {
+          "name": "Pro",
+          "privileges": "pro"
+        },
+        "birthday": "1982-02-28",
+        "member_since": "2009-11-23T19:01:25+00:00"
+      },
+      "opportunity": {
+        "id": "bc9fae4a-3014-11e2-837e-1231390fe2d4"
+      },
+      "name": "06 Kiss Me Crazy",
+      "description": null,
+      "waveform_url": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/waveform/3369/06 Kiss Me Crazy_waveform.png",
+      "preview_url": "https://lydian.indavelopment.com/submissions/2f0b0f20-8c1c-11e2-8736-12313b083ca7/preview",
+      "duration": 203780,
+      "listen_count": 10,
+      "play_count": 36,
+      "comment_count": 0,
+      "processing_job_id": "6965f67c-8e86-47ec-b738-092874b40dec",
+      "playlist": {
+        "id": "cf899908-8c1c-11e2-9fcc-12313d02607e"
+      },
+      "rank": 4
+    },
+    {
+      "id": "14c76668-8c1c-11e2-8736-12313b083ca7",
+      "created_at": "2013-03-13T20:25:01+00:00",
+      "voter_count": 0,
+      "user": {
+        "id": "5c43461e-9a67-11df-8c2a-1231390b2657",
+        "slug": "ethan",
+        "name": "Ethan </3 Fuchs",
+        "image_urls": {
+          "tiny": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/2864/profile_tiny.png",
+          "detail": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/2864/profile_detail.png",
+          "profile": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/2864/profile_profile.png"
+        },
+        "location_country_code": "US",
+        "location_city": "New York",
+        "location_state": "New York",
+        "account_type": {
+          "name": "Pro",
+          "privileges": "pro"
+        },
+        "birthday": "1937-09-15",
+        "member_since": "2008-05-19T14:37:28+00:00"
+      },
+      "opportunity": {
+        "id": "bc9fae4a-3014-11e2-837e-1231390fe2d4"
+      },
+      "name": "Come In Please",
+      "description": "5/5... i'm done",
+      "waveform_url": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/waveform/3368/09 Come In Please_waveform.png",
+      "preview_url": "https://lydian.indavelopment.com/submissions/14c76668-8c1c-11e2-8736-12313b083ca7/preview",
+      "duration": 305188,
+      "listen_count": 11,
+      "play_count": 37,
+      "comment_count": 0,
+      "processing_job_id": "e6c54e6a-01df-4d01-85e7-9f2fa6355cd0",
+      "playlist": {
+        "id": "b6ca9cd2-8c1c-11e2-9fcc-12313d02607e"
+      },
+      "rank": 20
+    },
+    {
+      "id": "024be090-8c1c-11e2-8736-12313b083ca7",
+      "created_at": "2013-03-13T20:24:30+00:00",
+      "voter_count": 0,
+      "user": {
+        "id": "5c4390d8-9a67-11df-8c2a-1231390b2657",
+        "slug": "085959070",
+        "name": "Peter Swan",
+        "image_urls": {
+          "tiny": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/3280/Photo on 2-1-12 at 3.33 PM_tiny.png",
+          "detail": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/3280/Photo on 2-1-12 at 3.33 PM_detail.png",
+          "profile": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/3280/Photo on 2-1-12 at 3.33 PM_profile.png"
+        },
+        "location_country_code": "US",
+        "location_city": "NYC",
+        "location_state": "New York",
+        "account_type": {
+          "name": "Pro",
+          "privileges": "pro"
+        },
+        "birthday": "1982-02-28",
+        "member_since": "2009-11-23T19:01:25+00:00"
+      },
+      "opportunity": {
+        "id": "bc9fae4a-3014-11e2-837e-1231390fe2d4"
+      },
+      "name": "03 I Can_t Wait",
+      "description": null,
+      "waveform_url": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/waveform/3367/03 I Can_t Wait_waveform.png",
+      "preview_url": "https://lydian.indavelopment.com/submissions/024be090-8c1c-11e2-8736-12313b083ca7/preview",
+      "duration": 233272,
+      "listen_count": 10,
+      "play_count": 35,
+      "comment_count": 10,
+      "processing_job_id": "35d8afdf-319c-4dd8-a450-95ffda7271e9",
+      "playlist": {
+        "id": "a2c0827e-8c1c-11e2-9fcc-12313d02607e"
+      },
+      "rank": 20
+    },
+    {
+      "id": "021e1c14-8c1c-11e2-8736-12313b083ca7",
+      "created_at": "2013-03-13T20:24:29+00:00",
+      "voter_count": 0,
+      "user": {
+        "id": "8f82c238-380e-11e2-b06d-1231390fe2d4",
+        "slug": "871865135",
+        "name": "A K",
+        "image_urls": {
+          "tiny": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/3159/577136_891837628511_1141555044_n_tiny.png",
+          "detail": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/3159/577136_891837628511_1141555044_n_detail.png",
+          "profile": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/3159/577136_891837628511_1141555044_n_profile.png"
+        },
+        "location_country_code": "US",
+        "location_city": "Brooklyn",
+        "location_state": "NY",
+        "account_type": {
+          "name": "Basic",
+          "privileges": "basic"
+        },
+        "birthday": null,
+        "member_since": "2012-11-26T21:16:37+00:00"
+      },
+      "opportunity": {
+        "id": "bc9fae4a-3014-11e2-837e-1231390fe2d4"
+      },
+      "name": "halogen",
+      "description": "Roman Rofalski piano\nJohannes Felscher bass\nAK drums",
+      "waveform_url": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/waveform/3366/halogen_waveform.png",
+      "preview_url": "https://lydian.indavelopment.com/submissions/021e1c14-8c1c-11e2-8736-12313b083ca7/preview",
+      "duration": 374528,
+      "listen_count": 3,
+      "play_count": 110,
+      "comment_count": 1,
+      "processing_job_id": "502952c6-da32-4866-8d29-f8f7e5351a8e",
+      "playlist": {
+        "id": "aba33df0-8c1c-11e2-9fcc-12313d02607e"
+      },
+      "rank": 20
+    },
+    {
+      "id": "ff212a06-8c1b-11e2-8736-12313b083ca7",
+      "created_at": "2013-03-13T20:24:24+00:00",
+      "voter_count": 2,
+      "user": {
+        "id": "555297a4-28f6-11e2-97e3-1231390fe2d4",
+        "slug": "042561822",
+        "name": "ARK",
+        "image_urls": {
+          "tiny": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/2979/profile_tiny.png",
+          "detail": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/2979/profile_detail.png",
+          "profile": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/2979/profile_profile.png"
+        },
+        "location_country_code": "US",
+        "location_city": "NYC",
+        "location_state": "1",
+        "account_type": {
+          "name": "Pro",
+          "privileges": "pro"
+        },
+        "birthday": null,
+        "member_since": "2012-11-07T16:15:30+00:00"
+      },
+      "opportunity": {
+        "id": "bc9fae4a-3014-11e2-837e-1231390fe2d4"
+      },
+      "name": "11. We Throw Shapes",
+      "description": null,
+      "waveform_url": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/waveform/3365/11. We Throw Shapes_waveform.png",
+      "preview_url": "https://lydian.indavelopment.com/submissions/ff212a06-8c1b-11e2-8736-12313b083ca7/preview",
+      "duration": 165067,
+      "listen_count": 4,
+      "play_count": 20,
+      "comment_count": 0,
+      "processing_job_id": "dd9cc381-4706-4ff6-a7c6-247c0997d041",
+      "playlist": {
+        "id": "9cfb5576-8c1c-11e2-9fcc-12313d02607e"
+      },
+      "rank": 1
+    },
+    {
+      "id": "df3f1de2-8c1b-11e2-8736-12313b083ca7",
+      "created_at": "2013-03-13T20:23:31+00:00",
+      "voter_count": 0,
+      "user": {
+        "id": "5c43461e-9a67-11df-8c2a-1231390b2657",
+        "slug": "ethan",
+        "name": "Ethan </3 Fuchs",
+        "image_urls": {
+          "tiny": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/2864/profile_tiny.png",
+          "detail": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/2864/profile_detail.png",
+          "profile": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/2864/profile_profile.png"
+        },
+        "location_country_code": "US",
+        "location_city": "New York",
+        "location_state": "New York",
+        "account_type": {
+          "name": "Pro",
+          "privileges": "pro"
+        },
+        "birthday": "1937-09-15",
+        "member_since": "2008-05-19T14:37:28+00:00"
+      },
+      "opportunity": {
+        "id": "bc9fae4a-3014-11e2-837e-1231390fe2d4"
+      },
+      "name": "Roll Up Your Sleeves",
+      "description": "listen to this",
+      "waveform_url": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/waveform/3364/03 Roll Up Your Sleeves_waveform.png",
+      "preview_url": "https://lydian.indavelopment.com/submissions/df3f1de2-8c1b-11e2-8736-12313b083ca7/preview",
+      "duration": 257018,
+      "listen_count": 3,
+      "play_count": 29,
+      "comment_count": 0,
+      "processing_job_id": "5679a237-a5ec-4dfa-8ef5-2de8ab0bb834",
+      "playlist": {
+        "id": "7f9e93b2-8c1c-11e2-9fcc-12313d02607e"
+      },
+      "rank": 20
+    },
+    {
+      "id": "786d8824-8c1b-11e2-8736-12313b083ca7",
+      "created_at": "2013-03-13T20:20:38+00:00",
+      "voter_count": 0,
+      "user": {
+        "id": "5f46ace8-dc32-11e1-8c2e-1231390f6943",
+        "slug": "301293992",
+        "name": "Eric Richmond",
+        "image_urls": {
+          "tiny": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/2591/profile_image_tiny.png",
+          "detail": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/2591/profile_image_detail.png",
+          "profile": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/2591/profile_image_profile.png"
+        },
+        "location_country_code": "US",
+        "location_city": "BROOKLYN",
+        "location_state": "NY",
+        "account_type": {
+          "name": "Basic",
+          "privileges": "basic"
+        },
+        "birthday": null,
+        "member_since": "2012-08-01T23:41:10+00:00"
+      },
+      "opportunity": {
+        "id": "bc9fae4a-3014-11e2-837e-1231390fe2d4"
+      },
+      "name": "05 Smedley's Melody",
+      "description": null,
+      "waveform_url": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/waveform/3363/05 Smedley's Melody_waveform.png",
+      "preview_url": "https://lydian.indavelopment.com/submissions/786d8824-8c1b-11e2-8736-12313b083ca7/preview",
+      "duration": 153155,
+      "listen_count": 8,
+      "play_count": 30,
+      "comment_count": 1,
+      "processing_job_id": "889d0888-95ce-4728-9128-1437843e403c",
+      "playlist": {
+        "id": "161b7ea0-8c1c-11e2-9fcc-12313d02607e"
+      },
+      "rank": 20
+    },
+    {
+      "id": "71dee980-8c1b-11e2-8736-12313b083ca7",
+      "created_at": "2013-03-13T20:20:27+00:00",
+      "voter_count": 0,
+      "user": {
+        "id": "5c4390d8-9a67-11df-8c2a-1231390b2657",
+        "slug": "085959070",
+        "name": "Peter Swan",
+        "image_urls": {
+          "tiny": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/3280/Photo on 2-1-12 at 3.33 PM_tiny.png",
+          "detail": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/3280/Photo on 2-1-12 at 3.33 PM_detail.png",
+          "profile": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/3280/Photo on 2-1-12 at 3.33 PM_profile.png"
+        },
+        "location_country_code": "US",
+        "location_city": "NYC",
+        "location_state": "New York",
+        "account_type": {
+          "name": "Pro",
+          "privileges": "pro"
+        },
+        "birthday": "1982-02-28",
+        "member_since": "2009-11-23T19:01:25+00:00"
+      },
+      "opportunity": {
+        "id": "bc9fae4a-3014-11e2-837e-1231390fe2d4"
+      },
+      "name": "X",
+      "description": null,
+      "waveform_url": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/waveform/3362/X_waveform.png",
+      "preview_url": "https://lydian.indavelopment.com/submissions/71dee980-8c1b-11e2-8736-12313b083ca7/preview",
+      "duration": 277995,
+      "listen_count": 4,
+      "play_count": 21,
+      "comment_count": 0,
+      "processing_job_id": "c8a39996-5f43-45af-907b-cc042e065610",
+      "playlist": {
+        "id": "125869b8-8c1c-11e2-9fcc-12313d02607e"
+      },
+      "rank": 20
+    },
+    {
+      "id": "59cee3f4-8c1b-11e2-8736-12313b083ca7",
+      "created_at": "2013-03-13T20:19:47+00:00",
+      "voter_count": 0,
+      "user": {
+        "id": "5c4390d8-9a67-11df-8c2a-1231390b2657",
+        "slug": "085959070",
+        "name": "Peter Swan",
+        "image_urls": {
+          "tiny": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/3280/Photo on 2-1-12 at 3.33 PM_tiny.png",
+          "detail": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/3280/Photo on 2-1-12 at 3.33 PM_detail.png",
+          "profile": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/3280/Photo on 2-1-12 at 3.33 PM_profile.png"
+        },
+        "location_country_code": "US",
+        "location_city": "NYC",
+        "location_state": "New York",
+        "account_type": {
+          "name": "Pro",
+          "privileges": "pro"
+        },
+        "birthday": "1982-02-28",
+        "member_since": "2009-11-23T19:01:25+00:00"
+      },
+      "opportunity": {
+        "id": "bc9fae4a-3014-11e2-837e-1231390fe2d4"
+      },
+      "name": "01 The Witch",
+      "description": null,
+      "waveform_url": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/waveform/3361/01 The Witch_waveform.png",
+      "preview_url": "https://lydian.indavelopment.com/submissions/59cee3f4-8c1b-11e2-8736-12313b083ca7/preview",
+      "duration": 160000,
+      "listen_count": 8,
+      "play_count": 39,
+      "comment_count": 1,
+      "processing_job_id": "f7e2d8e3-dad0-4a25-bfa1-535753ae2941",
+      "playlist": {
+        "id": "f696d8e0-8c1b-11e2-9fcc-12313d02607e"
+      },
+      "rank": 20
+    },
+    {
+      "id": "53c93e5a-8c1b-11e2-8736-12313b083ca7",
+      "created_at": "2013-03-13T20:19:37+00:00",
+      "voter_count": 0,
+      "user": {
+        "id": "5f46ace8-dc32-11e1-8c2e-1231390f6943",
+        "slug": "301293992",
+        "name": "Eric Richmond",
+        "image_urls": {
+          "tiny": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/2591/profile_image_tiny.png",
+          "detail": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/2591/profile_image_detail.png",
+          "profile": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/2591/profile_image_profile.png"
+        },
+        "location_country_code": "US",
+        "location_city": "BROOKLYN",
+        "location_state": "NY",
+        "account_type": {
+          "name": "Basic",
+          "privileges": "basic"
+        },
+        "birthday": null,
+        "member_since": "2012-08-01T23:41:10+00:00"
+      },
+      "opportunity": {
+        "id": "bc9fae4a-3014-11e2-837e-1231390fe2d4"
+      },
+      "name": "04 Dimotane Co",
+      "description": null,
+      "waveform_url": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/waveform/3360/04 Dimotane Co_waveform.png",
+      "preview_url": "https://lydian.indavelopment.com/submissions/53c93e5a-8c1b-11e2-8736-12313b083ca7/preview",
+      "duration": 294687,
+      "listen_count": 4,
+      "play_count": 42,
+      "comment_count": 0,
+      "processing_job_id": "a1c8949c-eaed-4836-aee7-3e60a78b1f0a",
+      "playlist": {
+        "id": "f47b1bca-8c1b-11e2-9fcc-12313d02607e"
+      },
+      "rank": 20
+    },
+    {
+      "id": "28b2897e-8c1b-11e2-8736-12313b083ca7",
+      "created_at": "2013-03-13T20:18:24+00:00",
+      "voter_count": 0,
+      "user": {
+        "id": "5c43461e-9a67-11df-8c2a-1231390b2657",
+        "slug": "ethan",
+        "name": "Ethan </3 Fuchs",
+        "image_urls": {
+          "tiny": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/2864/profile_tiny.png",
+          "detail": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/2864/profile_detail.png",
+          "profile": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/2864/profile_profile.png"
+        },
+        "location_country_code": "US",
+        "location_city": "New York",
+        "location_state": "New York",
+        "account_type": {
+          "name": "Pro",
+          "privileges": "pro"
+        },
+        "birthday": "1937-09-15",
+        "member_since": "2008-05-19T14:37:28+00:00"
+      },
+      "opportunity": {
+        "id": "bc9fae4a-3014-11e2-837e-1231390fe2d4"
+      },
+      "name": "Animal",
+      "description": "this one worked!",
+      "waveform_url": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/waveform/3358/03 Animal_waveform.png",
+      "preview_url": "https://lydian.indavelopment.com/submissions/28b2897e-8c1b-11e2-8736-12313b083ca7/preview",
+      "duration": 212349,
+      "listen_count": 10,
+      "play_count": 48,
+      "comment_count": 0,
+      "processing_job_id": "3af5166d-25e3-4465-b7c3-4a1f9d55f6ad",
+      "playlist": {
+        "id": "c87440ba-8c1b-11e2-9fcc-12313d02607e"
+      },
+      "rank": 20
+    },
+    {
+      "id": "e1467f28-8c1a-11e2-8736-12313b083ca7",
+      "created_at": "2013-03-13T20:16:25+00:00",
+      "voter_count": 0,
+      "user": {
+        "id": "5f46ace8-dc32-11e1-8c2e-1231390f6943",
+        "slug": "301293992",
+        "name": "Eric Richmond",
+        "image_urls": {
+          "tiny": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/2591/profile_image_tiny.png",
+          "detail": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/2591/profile_image_detail.png",
+          "profile": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/2591/profile_image_profile.png"
+        },
+        "location_country_code": "US",
+        "location_city": "BROOKLYN",
+        "location_state": "NY",
+        "account_type": {
+          "name": "Basic",
+          "privileges": "basic"
+        },
+        "birthday": null,
+        "member_since": "2012-08-01T23:41:10+00:00"
+      },
+      "opportunity": {
+        "id": "bc9fae4a-3014-11e2-837e-1231390fe2d4"
+      },
+      "name": "03 The Swifty",
+      "description": null,
+      "waveform_url": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/waveform/3356/03 The Swifty_waveform.png",
+      "preview_url": "https://lydian.indavelopment.com/submissions/e1467f28-8c1a-11e2-8736-12313b083ca7/preview",
+      "duration": 320156,
+      "listen_count": 0,
+      "play_count": 17,
+      "comment_count": 0,
+      "processing_job_id": "2e27090f-3044-4277-8c4b-c1e99a906060",
+      "playlist": {
+        "id": "82013b7e-8c1b-11e2-9fcc-12313d02607e"
+      },
+      "rank": 20
+    },
+    {
+      "id": "d13ca062-8c1a-11e2-8736-12313b083ca7",
+      "created_at": "2013-03-13T20:15:58+00:00",
+      "voter_count": 0,
+      "user": {
+        "id": "6519747e-8e54-11e1-a401-1231390f6943",
+        "slug": "967756377",
+        "name": "Matt Haden",
+        "image_urls": {
+          "tiny": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/3347/steve_color_tiny.png",
+          "detail": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/3347/steve_color_detail.png",
+          "profile": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/3347/steve_color_profile.png"
+        },
+        "location_country_code": "VE",
+        "location_city": "Two",
+        "location_state": "NY",
+        "account_type": {
+          "name": "Basic",
+          "privileges": "basic"
+        },
+        "birthday": "1984-02-16",
+        "member_since": "2012-04-24T21:28:12+00:00"
+      },
+      "opportunity": {
+        "id": "bc9fae4a-3014-11e2-837e-1231390fe2d4"
+      },
+      "name": "THEME TIME",
+      "description": null,
+      "waveform_url": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/waveform/3355/THEME TIME_waveform.png",
+      "preview_url": "https://lydian.indavelopment.com/submissions/d13ca062-8c1a-11e2-8736-12313b083ca7/preview",
+      "duration": 127350,
+      "listen_count": 6,
+      "play_count": 37,
+      "comment_count": 3,
+      "processing_job_id": "be5eb6fe-0941-4ec7-bf23-c8866ee3bb7c",
+      "playlist": {
+        "id": "6f9900f2-8c1b-11e2-9fcc-12313d02607e"
+      },
+      "rank": 20
+    },
+    {
+      "id": "b60d5174-8c1a-11e2-8736-12313b083ca7",
+      "created_at": "2013-03-13T20:15:12+00:00",
+      "voter_count": 0,
+      "user": {
+        "id": "5f46ace8-dc32-11e1-8c2e-1231390f6943",
+        "slug": "301293992",
+        "name": "Eric Richmond",
+        "image_urls": {
+          "tiny": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/2591/profile_image_tiny.png",
+          "detail": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/2591/profile_image_detail.png",
+          "profile": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/2591/profile_image_profile.png"
+        },
+        "location_country_code": "US",
+        "location_city": "BROOKLYN",
+        "location_state": "NY",
+        "account_type": {
+          "name": "Basic",
+          "privileges": "basic"
+        },
+        "birthday": null,
+        "member_since": "2012-08-01T23:41:10+00:00"
+      },
+      "opportunity": {
+        "id": "bc9fae4a-3014-11e2-837e-1231390fe2d4"
+      },
+      "name": "01 Squarepusher Theme",
+      "description": null,
+      "waveform_url": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/waveform/3353/01 Squarepusher Theme_waveform.png",
+      "preview_url": "https://lydian.indavelopment.com/submissions/b60d5174-8c1a-11e2-8736-12313b083ca7/preview",
+      "duration": 380395,
+      "listen_count": 10,
+      "play_count": 32,
+      "comment_count": 2,
+      "processing_job_id": "666ca666-8b9e-4a7c-b43d-e5082164dcd6",
+      "playlist": {
+        "id": "6013d864-8c1b-11e2-9fcc-12313d02607e"
+      },
+      "rank": 20
+    },
+    {
+      "id": "b2350006-8c1a-11e2-8736-12313b083ca7",
+      "created_at": "2013-03-13T20:15:06+00:00",
+      "voter_count": 0,
+      "user": {
+        "id": "6519747e-8e54-11e1-a401-1231390f6943",
+        "slug": "967756377",
+        "name": "Matt Haden",
+        "image_urls": {
+          "tiny": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/3347/steve_color_tiny.png",
+          "detail": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/3347/steve_color_detail.png",
+          "profile": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/3347/steve_color_profile.png"
+        },
+        "location_country_code": "VE",
+        "location_city": "Two",
+        "location_state": "NY",
+        "account_type": {
+          "name": "Basic",
+          "privileges": "basic"
+        },
+        "birthday": "1984-02-16",
+        "member_since": "2012-04-24T21:28:12+00:00"
+      },
+      "opportunity": {
+        "id": "bc9fae4a-3014-11e2-837e-1231390fe2d4"
+      },
+      "name": "SEASONS OF MY HEART",
+      "description": null,
+      "waveform_url": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/waveform/3352/SEASONS OF MY HEART_waveform.png",
+      "preview_url": "https://lydian.indavelopment.com/submissions/b2350006-8c1a-11e2-8736-12313b083ca7/preview",
+      "duration": 160057,
+      "listen_count": 9,
+      "play_count": 43,
+      "comment_count": 1,
+      "processing_job_id": "603655e8-7d13-4eec-9e5c-6bd63a94d9b7",
+      "playlist": {
+        "id": "53618436-8c1b-11e2-9fcc-12313d02607e"
+      },
+      "rank": 20
+    },
+    {
+      "id": "ae467af6-8c1a-11e2-8736-12313b083ca7",
+      "created_at": "2013-03-13T20:14:59+00:00",
+      "voter_count": 0,
+      "user": {
+        "id": "5c43461e-9a67-11df-8c2a-1231390b2657",
+        "slug": "ethan",
+        "name": "Ethan </3 Fuchs",
+        "image_urls": {
+          "tiny": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/2864/profile_tiny.png",
+          "detail": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/2864/profile_detail.png",
+          "profile": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/2864/profile_profile.png"
+        },
+        "location_country_code": "US",
+        "location_city": "New York",
+        "location_state": "New York",
+        "account_type": {
+          "name": "Pro",
+          "privileges": "pro"
+        },
+        "birthday": "1937-09-15",
+        "member_since": "2008-05-19T14:37:28+00:00"
+      },
+      "opportunity": {
+        "id": "bc9fae4a-3014-11e2-837e-1231390fe2d4"
+      },
+      "name": "King's Blues",
+      "description": "what up",
+      "waveform_url": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/waveform/3351/13 King's Blues_waveform.png",
+      "preview_url": "https://lydian.indavelopment.com/submissions/ae467af6-8c1a-11e2-8736-12313b083ca7/preview",
+      "duration": 181106,
+      "listen_count": 9,
+      "play_count": 44,
+      "comment_count": 0,
+      "processing_job_id": "35444de8-e523-4e5e-b4ca-49b5c8a89b59",
+      "playlist": {
+        "id": "4ecee8b4-8c1b-11e2-9fcc-12313d02607e"
+      },
+      "rank": 20
+    },
+    {
+      "id": "92cf07fc-8c1a-11e2-8736-12313b083ca7",
+      "created_at": "2013-03-13T20:14:13+00:00",
+      "voter_count": 0,
+      "user": {
+        "id": "6519747e-8e54-11e1-a401-1231390f6943",
+        "slug": "967756377",
+        "name": "Matt Haden",
+        "image_urls": {
+          "tiny": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/3347/steve_color_tiny.png",
+          "detail": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/3347/steve_color_detail.png",
+          "profile": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/3347/steve_color_profile.png"
+        },
+        "location_country_code": "VE",
+        "location_city": "Two",
+        "location_state": "NY",
+        "account_type": {
+          "name": "Basic",
+          "privileges": "basic"
+        },
+        "birthday": "1984-02-16",
+        "member_since": "2012-04-24T21:28:12+00:00"
+      },
+      "opportunity": {
+        "id": "bc9fae4a-3014-11e2-837e-1231390fe2d4"
+      },
+      "name": "PRISONERS SONG",
+      "description": null,
+      "waveform_url": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/waveform/3350/PRISONERS SONG_waveform.png",
+      "preview_url": "https://lydian.indavelopment.com/submissions/92cf07fc-8c1a-11e2-8736-12313b083ca7/preview",
+      "duration": 152741,
+      "listen_count": 8,
+      "play_count": 42,
+      "comment_count": 3,
+      "processing_job_id": "12adf86b-d373-4fa3-9c01-e86d8f84ad0a",
+      "playlist": {
+        "id": "331c1eca-8c1b-11e2-9fcc-12313d02607e"
+      },
+      "rank": 20
+    },
+    {
+      "id": "8ad60dfc-8c1a-11e2-8736-12313b083ca7",
+      "created_at": "2013-03-13T20:14:00+00:00",
+      "voter_count": 0,
+      "user": {
+        "id": "5f46ace8-dc32-11e1-8c2e-1231390f6943",
+        "slug": "301293992",
+        "name": "Eric Richmond",
+        "image_urls": {
+          "tiny": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/2591/profile_image_tiny.png",
+          "detail": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/2591/profile_image_detail.png",
+          "profile": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/2591/profile_image_profile.png"
+        },
+        "location_country_code": "US",
+        "location_city": "BROOKLYN",
+        "location_state": "NY",
+        "account_type": {
+          "name": "Basic",
+          "privileges": "basic"
+        },
+        "birthday": null,
+        "member_since": "2012-08-01T23:41:10+00:00"
+      },
+      "opportunity": {
+        "id": "bc9fae4a-3014-11e2-837e-1231390fe2d4"
+      },
+      "name": "02 Tundra",
+      "description": null,
+      "waveform_url": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/waveform/3349/02 Tundra_waveform.png",
+      "preview_url": "https://lydian.indavelopment.com/submissions/8ad60dfc-8c1a-11e2-8736-12313b083ca7/preview",
+      "duration": 475323,
+      "listen_count": 11,
+      "play_count": 55,
+      "comment_count": 0,
+      "processing_job_id": "e9522f33-b85b-4e10-a6a7-8209f931d5e5",
+      "playlist": {
+        "id": "37d5d62c-8c1b-11e2-9fcc-12313d02607e"
+      },
+      "rank": 20
+    },
+    {
+      "id": "858b90c4-8c1a-11e2-8736-12313b083ca7",
+      "created_at": "2013-03-13T20:13:51+00:00",
+      "voter_count": 0,
+      "user": {
+        "id": "5c43461e-9a67-11df-8c2a-1231390b2657",
+        "slug": "ethan",
+        "name": "Ethan </3 Fuchs",
+        "image_urls": {
+          "tiny": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/2864/profile_tiny.png",
+          "detail": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/2864/profile_detail.png",
+          "profile": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/2864/profile_profile.png"
+        },
+        "location_country_code": "US",
+        "location_city": "New York",
+        "location_state": "New York",
+        "account_type": {
+          "name": "Pro",
+          "privileges": "pro"
+        },
+        "birthday": "1937-09-15",
+        "member_since": "2008-05-19T14:37:28+00:00"
+      },
+      "opportunity": {
+        "id": "bc9fae4a-3014-11e2-837e-1231390fe2d4"
+      },
+      "name": "Kisses Over Babylon",
+      "description": "a song",
+      "waveform_url": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/waveform/3348/11 Kisses Over Babylon_waveform.png",
+      "preview_url": "https://lydian.indavelopment.com/submissions/858b90c4-8c1a-11e2-8736-12313b083ca7/preview",
+      "duration": 315846,
+      "listen_count": 7,
+      "play_count": 30,
+      "comment_count": 3,
+      "processing_job_id": "8192a911-9ea3-413c-8c08-7ed97484732d",
+      "playlist": {
+        "id": "29f81470-8c1b-11e2-9fcc-12313d02607e"
+      },
+      "rank": 20
+    },
+    {
+      "id": "7cea32f4-8c1a-11e2-8736-12313b083ca7",
+      "created_at": "2013-03-13T20:13:36+00:00",
+      "voter_count": 1,
+      "user": {
+        "id": "6519747e-8e54-11e1-a401-1231390f6943",
+        "slug": "967756377",
+        "name": "Matt Haden",
+        "image_urls": {
+          "tiny": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/3347/steve_color_tiny.png",
+          "detail": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/3347/steve_color_detail.png",
+          "profile": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/3347/steve_color_profile.png"
+        },
+        "location_country_code": "VE",
+        "location_city": "Two",
+        "location_state": "NY",
+        "account_type": {
+          "name": "Basic",
+          "privileges": "basic"
+        },
+        "birthday": "1984-02-16",
+        "member_since": "2012-04-24T21:28:12+00:00"
+      },
+      "opportunity": {
+        "id": "bc9fae4a-3014-11e2-837e-1231390fe2d4"
+      },
+      "name": "OUR LAST GOODBYE",
+      "description": null,
+      "waveform_url": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/waveform/3346/OUR LAST GOODBYE_waveform.png",
+      "preview_url": "https://lydian.indavelopment.com/submissions/7cea32f4-8c1a-11e2-8736-12313b083ca7/preview",
+      "duration": 151670,
+      "listen_count": 14,
+      "play_count": 65,
+      "comment_count": 2,
+      "processing_job_id": "01af916d-1804-443a-a2c8-cb29d201ff2a",
+      "playlist": {
+        "id": "1dbe6e66-8c1b-11e2-9fcc-12313d02607e"
+      },
+      "rank": 4
+    },
+    {
+      "id": "77c5d468-8c1a-11e2-8736-12313b083ca7",
+      "created_at": "2013-03-13T20:13:28+00:00",
+      "voter_count": 0,
+      "user": {
+        "id": "555297a4-28f6-11e2-97e3-1231390fe2d4",
+        "slug": "042561822",
+        "name": "ARK",
+        "image_urls": {
+          "tiny": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/2979/profile_tiny.png",
+          "detail": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/2979/profile_detail.png",
+          "profile": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/2979/profile_profile.png"
+        },
+        "location_country_code": "US",
+        "location_city": "NYC",
+        "location_state": "1",
+        "account_type": {
+          "name": "Pro",
+          "privileges": "pro"
+        },
+        "birthday": null,
+        "member_since": "2012-11-07T16:15:30+00:00"
+      },
+      "opportunity": {
+        "id": "bc9fae4a-3014-11e2-837e-1231390fe2d4"
+      },
+      "name": "01. First Crush (Featuring Knife City)",
+      "description": null,
+      "waveform_url": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/waveform/3345/01. First Crush (Featuring Knife City)_waveform.png",
+      "preview_url": "https://lydian.indavelopment.com/submissions/77c5d468-8c1a-11e2-8736-12313b083ca7/preview",
+      "duration": 316002,
+      "listen_count": 14,
+      "play_count": 59,
+      "comment_count": 1,
+      "processing_job_id": "71a97a52-6219-49f0-8a61-4eb685bc1217",
+      "playlist": {
+        "id": "20a3f7b8-8c1b-11e2-9fcc-12313d02607e"
+      },
+      "rank": 20
+    }
+  ],
+  "total_records": 66
+}
