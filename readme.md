@@ -1,10 +1,11 @@
-Create a client
+Create a client with options:
+
+* `dorianEndpoint`: required
+* `lydianEndpoint`: required
+* `token`: optional access token
 
 ```js
-
-var makeClient = require('indaba-client');
-
-client = makeClient({
+client = require('indaba-client')({
   dorianEndpoint: 'http://beta.indavelopment.com',
   lydianEndpoint: process.env.INDABA_TEST_ENDPOINT,
   token: token
@@ -27,7 +28,7 @@ var opp = new client.Opportunity(opportunityJsonData);
 * `cast`: data or datum will be cast to this class (`client.Opportunity`)
 
 ```js
-var opp = client.get({
+client.get({
   path: '/opportunities',
   query: {
     limit: 10
@@ -42,25 +43,17 @@ var opp = client.get({
 
 ## Post Request:
 
-* `path`: required URL path (`/opportunities/`)
+* `path`: required URL path
 * `body`: payload object of post request
-* `cast`: data or datum will be cast to this class (`client.Opportunity`)
+* `cast`: data or datum will be cast to this class
 
 
-## Testing:
-
-Get a valid token + endpoint combo and add these to your .bash_profile:
-
+```js
+client.post({
+  path: '/opportunities/xxx/enter'
+}, function(err) {
+  if (!err) {
+    console.log("you are entered!");
+  }
+})
 ```
-export INDABA_TEST_ENDPOINT='https://lydian.indavelopment.com'
-export INDABA_TEST_TOKEN='xxxx'
-```
-
-
-## Roadmap:
-
-* client.startSession() -- loads all requisite data for user: follows, votes, entries, submissions, etc.
-* emit events -- maybe use the fancy array, etc.
-* fancy array should be able to cast items on add
-
-* test server should provide canned responses for fast testing
