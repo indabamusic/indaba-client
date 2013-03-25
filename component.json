@@ -5,8 +5,7 @@
   "version": "0.0.1",
   "keywords": [],
   "dependencies": {
-    "visionmedia/superagent": "0.13.0",
-    "matthewmueller/array": "0.2.1"
+    "visionmedia/superagent": "0.13.0"
   },
   "development": {},
   "license": "MIT",

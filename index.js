@@ -1,10 +1,4 @@
 var superagent = require('superagent');
-var array;
-try {
-  array = require('array.js');
-} catch(e) {
-  array = require('array');
-}
 
 module.exports = function(ENV) {
   if (!ENV || !ENV.lydianEndpoint) throw new Error("lydianEndpoint is required");
@@ -118,7 +112,7 @@ module.exports = function(ENV) {
    *
    * stores following for current user
    */
-  client.following = array();
+  client.following = [];
 
   client.loadFollowing = function loadFollowing(cb) {
     if (!client.currentUser) cb(new Error('client.currentUser is required. Call client.whoami first.'));
@@ -137,9 +131,8 @@ module.exports = function(ENV) {
   };
 
   client.isFollowing = function(user) {
-    return !!client.following.find(function(u) {
-      return u.id === user.id;
-    });
+    var index = _indexOfId(client.following, user.id);
+    return (index > -1);
   };
 
   client.follow = function follow(user, cb) {
@@ -161,15 +154,16 @@ module.exports = function(ENV) {
     };
     post(request, function(err) {
       if (err) return cb(err);
-      client.following = client.following.reject(function(u) {
-        return u.id === user.id;
-      });
+      var index = _indexOfId(client.following, user.id);
+      if (index > -1) {
+        client.following.splice(index, 1);
+      }
       cb(null);
     });
   };
 
 
-  client.followers = array();
+  client.followers = [];
   client.loadFollowers = function(cb) {
     if (!client.currentUser) cb(new Error('client.currentUser is required. Call client.whoami first.'));
     var request = {
@@ -186,9 +180,7 @@ module.exports = function(ENV) {
     });
   };
   client.isFollowedBy = function(user) {
-    return !!client.followers.find(function(u) {
-      return u.id === user.id;
-    });
+    return (client.followers.indexOf(user) > -1);
   };
 
   /**
@@ -196,7 +188,7 @@ module.exports = function(ENV) {
    *
    */
 
-  client.enteredOpportunities = array();
+  client.enteredOpportunities = [];
 
   client.loadEnteredOpportunities = function(cb) {
     var request = {
@@ -225,9 +217,7 @@ module.exports = function(ENV) {
   };
 
   client.isEntered = function(opp, cb) {
-    return !!client.enteredOpportunities.find(function(o) {
-      return o.id === opp.id;
-    });
+    return (_indexOfId(client.enteredOpportunities, opp.id) > -1);
   };
 
 
@@ -236,7 +226,7 @@ module.exports = function(ENV) {
    *
    */
 
-  client.votedSubmissions = array();
+  client.votedSubmissions = [];
 
   client.loadVotedSubmissions = function(query, cb) {
     if (!cb) {
@@ -282,17 +272,17 @@ module.exports = function(ENV) {
     };
     post(request, function(err) {
       if (err) return cb(err);
-      client.votedSubmissions = client.votedSubmissions.reject(function(s) {
-        return s.id === submission.id;
-      });
+      var index = _indexOfId(client.votedSubmissions, submission.id);
+      if (index > -1) {
+        client.votedSubmissions.splice(index, 1);
+      }
       cb(null);
     });
   };
 
   client.hasVotedFor = function(submission, cb) {
-    return !!client.votedSubmissions.find(function(s) {
-      return s.id === submission.id;
-    });
+    var index = _indexOfId(client.votedSubmissions, submission.id);
+    return (index > -1);
   };
 
 
@@ -316,4 +306,14 @@ module.exports = function(ENV) {
     }
   }
 
+
+  function _indexOfId(array, id) {
+    for (var i = 0; i < array.length; ++i) {
+      var item = array[i];
+      if (item.id == id) {
+        return i;
+      }
+    }
+    return -1;
+  }
 };
