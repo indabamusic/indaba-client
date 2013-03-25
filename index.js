@@ -238,9 +238,14 @@ module.exports = function(ENV) {
 
   client.votedSubmissions = array();
 
-  client.loadVotedSubmissions = function(cb) {
+  client.loadVotedSubmissions = function(query, cb) {
+    if (!cb) {
+      cb = query;
+      query = {};
+    }
     var request = {
       path: "/whoami/voted_submissions",
+      query: query,
       cast: client.Submission,
       all: true
     };
@@ -281,6 +286,12 @@ module.exports = function(ENV) {
         return s.id === submission.id;
       });
       cb(null);
+    });
+  };
+
+  client.hasVotedFor = function(submission, cb) {
+    return !!client.votedSubmissions.find(function(s) {
+      return s.id === submission.id;
     });
   };
 

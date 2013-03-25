@@ -157,9 +157,11 @@ describe('client.vote', function() {
   var sub = fixture.submissions[0];
   it('adds submission to client.votedSubmissions', function(done) {
     assert.equal(client.votedSubmissions.length, 0);
+    assert.ok(!client.hasVotedFor(sub));
     client.vote(sub, function(err) {
       assert.ifError(err);
       assert.equal(client.votedSubmissions.length, 1);
+      assert.ok(client.hasVotedFor(sub));
       done();
     });
   });
@@ -172,9 +174,11 @@ describe('client.unvote', function() {
   });
   it('removes submission to client.votedSubmissions', function(done) {
     assert.equal(client.votedSubmissions.length, 1);
+    assert.ok(client.hasVotedFor(sub));
     client.unvote(sub, function(err) {
       assert.ifError(err);
       assert.equal(client.votedSubmissions.length, 0);
+      assert.ok(!client.hasVotedFor(sub));
       done();
     });
   });
