@@ -75,11 +75,11 @@ describe('client.loadFollowing', function() {
 describe('client.follow', function() {
   var someUser = fixture.users[0];
   it('adds user to following', function(done) {
+    assert.equal(client.following.length, 0);
     assert.ok(!client.isFollowing(someUser));
-    var beforeLength = client.following.length;
     client.follow(someUser, function(err) {
       assert.ifError(err);
-      assert.equal(client.following.length, beforeLength + 1);
+      assert.equal(client.following.length, 1);
       assert.ok(client.isFollowing(someUser));
       done();
     });
@@ -89,19 +89,15 @@ describe('client.follow', function() {
 
 describe('client.unfollow', function() {
   var someUser = fixture.users[8];
-  var beforeLength;
   beforeEach(function(done) {
-    client.follow(someUser, function(err) {
-      assert.ifError(err);
-      assert.ok(client.isFollowing(someUser));
-      beforeLength = client.following.length;
-      done();
-    });
+    client.follow(someUser, done);
   });
   it('removes user from following', function(done) {
+    assert.equal(client.following.length, 1);
+    assert.ok(client.isFollowing(someUser));
     client.unfollow(someUser, function(err) {
       assert.ifError(err);
-      assert.equal(client.following.length, beforeLength - 1);
+      assert.equal(client.following.length, 0);
       assert.ok(!client.isFollowing(someUser));
       done();
     });
@@ -169,9 +165,7 @@ describe('client.vote', function() {
 describe('client.unvote', function() {
   var sub = fixture.submissions[0];
   beforeEach(function(done) {
-    client.vote(sub, function(err) {
-      done(err);
-    });
+    client.vote(sub, done);
   });
   it('removes submission to client.votedSubmissions', function(done) {
     assert.equal(client.votedSubmissions.length, 1);
