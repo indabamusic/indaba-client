@@ -1,0 +1,12 @@
+<script src="/build.js"></script>
+<script>
+  client = require('indaba-client')({
+    dorianEndpoint: 'http://beta.indavelopment.com',
+    lydianEndpoint: 'http://' + location.host,
+    token: 'test-token',
+    facebookToken: 'facebook-token'
+  });
+  client.whoami(function(err) {
+    console.log(client.currentUser);
+  });
+</script>

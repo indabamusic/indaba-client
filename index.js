@@ -1,5 +1,10 @@
 var superagent = require('superagent');
-var array = require('array.js');
+var array;
+try {
+  array = require('array.js');
+} catch(e) {
+  array = require('array');
+}
 
 module.exports = function(ENV) {
   if (!ENV || !ENV.lydianEndpoint) throw new Error("lydianEndpoint is required");

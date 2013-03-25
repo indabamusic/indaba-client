@@ -1,0 +1,21 @@
+{
+  "name": "indaba-client",
+  "repo": "indabamusic/indaba-client",
+  "description": "JavaScript client for the Indaba Music API.",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {
+    "visionmedia/superagent": "0.13.0",
+    "matthewmueller/array": "0.2.1"
+  },
+  "development": {},
+  "license": "MIT",
+  "scripts": [
+    "index.js",
+    "lib/submission.js",
+    "lib/opportunity.js",
+    "lib/comment.js",
+    "lib/extend.js",
+    "lib/user.js"
+  ]
+}

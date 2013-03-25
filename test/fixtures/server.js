@@ -2,6 +2,7 @@ var port = process.env.INDABA_TEST_PORT;
 var MAX_OFFSET = parseInt(process.env.MAX_OFFSET, 10);
 
 var express = require('express');
+var fs = require('fs');
 var app = express();
 
 app.use(function(req, resp, next) {
@@ -17,6 +18,11 @@ function okResponse(req, resp) {
   resp.json({status: 'success'});
 }
 
+// in_browser
+app.use(express.static(__dirname + '/../../build'));
+app.get('/in_browser', function(req, resp) {
+  fs.createReadStream('./in_browser.html').pipe(resp);
+});
 
 // Gets
 // ----
