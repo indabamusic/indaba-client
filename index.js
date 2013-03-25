@@ -130,6 +130,12 @@ module.exports = function(ENV) {
     });
   };
 
+  client.isFollowing = function(user) {
+    return !!client.following.find(function(u) {
+      return u.id === user.id;
+    });
+  };
+
   client.follow = function follow(user, cb) {
     var request = {
       path: "/users/" + user.slug + "/follow"
