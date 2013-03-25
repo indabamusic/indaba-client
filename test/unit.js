@@ -1,4 +1,5 @@
 var port = process.env.INDABA_TEST_PORT = 13352;
+var MAX_OFFSET = process.env.MAX_OFFSET = 100;
 var indabaClient = require('../index');
 
 var assert = require('assert');
@@ -15,14 +16,24 @@ beforeEach(function() {
 });
 
 describe('client.get', function() {
-  it('gets users', function(done) {
+  it('casts results to specified Model', function(done) {
     var req = {
       path: '/users',
       cast: client.User
     };
     client.get(req, function(err, data) {
-      assert.ok(data);
       assert.ok(data[0] instanceof client.User);
+      done(err);
+    });
+  });
+  it('all option gets all the records', function(done) {
+    var req = {
+      path: '/users',
+      cast: client.User,
+      all: true
+    };
+    client.get(req, function(err, data) {
+      assert.equal(data.length, MAX_OFFSET);
       done(err);
     });
   });
