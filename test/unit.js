@@ -3,7 +3,7 @@ var MAX_OFFSET = process.env.MAX_OFFSET = 100;
 var indabaClient = require('../index');
 
 var assert = require('assert');
-var testServer = require('./fixtures/server');
+var testServer = require('./server/server');
 
 var client;
 var fixture = {

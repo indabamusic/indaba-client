@@ -7,13 +7,16 @@ var app = express();
 
 app.use(function(req, resp, next) {
   if (req.query.offset && req.query.offset >= MAX_OFFSET) {
-    resp.json(require('./empty.json'));
+    resp.json(fixture('empty'));
   }
   else {
     next();
   }
 });
 
+function fixture(name) {
+  return require('../fixtures/' + name);
+}
 function okResponse(req, resp) {
   resp.json({status: 'success'});
 }
@@ -28,23 +31,23 @@ app.get('/in_browser', function(req, resp) {
 // ----
 
 app.get('/users', function(req, resp) {
-  resp.json(require('./users'));
+  resp.json(fixture('users'));
 });
 app.get('/users/:user_id/follows', function(req, resp) {
-  resp.json(require('./users'));
+  resp.json(fixture('users'));
 });
 app.get('/users/:user_id/followers', function(req, resp) {
-  resp.json(require('./users'));
+  resp.json(fixture('users'));
 });
 
 app.get('/whoami', function(req, resp) {
-  resp.json(require('./whoami'));
+  resp.json(fixture('whoami'));
 });
 app.get('/whoami/entered_opportunities', function(req, resp) {
-  resp.json(require('./opportunities'));
+  resp.json(fixture('opportunities'));
 });
 app.get('/whoami/voted_submissions', function(req, resp) {
-  resp.json(require('./submissions'));
+  resp.json(fixture('submissions'));
 });
 
 // Posts
