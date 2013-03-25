@@ -8,36 +8,16 @@ var client = makeClient({
   token: token
 });
 
-var someUser;
+var someUsers = require('./fixtures/users.json').data;
+var someUser = someUsers[1];
+client.currentUser = someUsers[0];
 
-before(function(done) {
-
-  var request = {
-    path: '/users',
-    cast: client.User
-  };
-  client.get(request, function(err, data) {
-    someUser = data[0];
-    assert.ok(someUser);
-    ensureNotFollowing();
-  });
-
-  function ensureNotFollowing() {
-    client.unfollow(someUser, function(err) {
-      done();
-    });
-  }
-});
 
 describe('following', function() {
 
-  it('requires whoami first', function(done) {
-    client.whoami(function(err, user) {
-      assert.ok(user);
-      assert.ok(client.currentUser);
-      assert.equal(client.currentUser, user);
-      assert.ok(user.profileUrl());
-      done(err);
+  it('unfollow first', function(done) {
+    client.unfollow(someUser, function(err) {
+      done();
     });
   });
 
@@ -74,16 +54,6 @@ describe('following', function() {
 });
 
 describe('followers', function() {
-
-  it('requires whoami first', function(done) {
-    client.whoami(function(err, user) {
-      assert.ok(user);
-      assert.ok(client.currentUser);
-      assert.equal(client.currentUser, user);
-      assert.ok(user.profileUrl());
-      done(err);
-    });
-  });
 
   it('loads followers', function(done) {
     client.loadFollowers(function(err, data) {
