@@ -218,6 +218,12 @@ module.exports = function(ENV) {
     });
   };
 
+  client.isEntered = function(opp, cb) {
+    return !!client.enteredOpportunities.find(function(o) {
+      return o.id === opp.id;
+    });
+  };
+
 
   // Public Interface
   // ----------------

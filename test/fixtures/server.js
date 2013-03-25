@@ -30,9 +30,13 @@ app.get('/users/:user_id/follows', function(req, resp) {
 app.get('/users/:user_id/followers', function(req, resp) {
   resp.json(require('./users'));
 });
+app.get('/whoami/entered_opportunities', function(req, resp) {
+  resp.json(require('./opportunities'));
+});
 
 app.post('/users/:user_id/follow', okResponse);
 app.post('/users/:user_id/unfollow', okResponse);
+app.post('/opportunities/:opportunity_id/enter', okResponse);
 
 app.get('*', function(req, res){
   console.error('\nno GET:', req.path);

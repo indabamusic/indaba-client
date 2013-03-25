@@ -7,7 +7,8 @@ var testServer = require('./fixtures/server');
 
 var client;
 var fixture = {
-  users: require('./fixtures/users').data
+  users: require('./fixtures/users').data,
+  opportunities: require('./fixtures/opportunities').data
 };
 
 beforeEach(function(done) {
@@ -112,6 +113,29 @@ describe('client.loadFollowers', function() {
       assert.ifError(err);
       var datum = data[0];
       assert.ok(client.isFollowedBy(datum));
+      done();
+    });
+  });
+});
+
+
+describe('client.loadEnteredOpportunities', function() {
+  it('populates client.enteredOpportunities', function(done) {
+    client.loadEnteredOpportunities(function(err, opps) {
+      assert.ifError(err);
+      done();
+    });
+  });
+});
+
+
+describe('client.enterOpportunity', function() {
+  it('adds opportunity to your enteredOpportunities', function(done) {
+    var opp = fixture.opportunities[0];
+    client.enterOpportunity(opp, function(err) {
+      assert.ifError(err);
+      assert.equal(client.enteredOpportunities.length, 1);
+      assert.ok(client.isEntered(opp));
       done();
     });
   });
