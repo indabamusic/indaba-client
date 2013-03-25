@@ -145,6 +145,7 @@ describe('client.loadVotedSubmissions', function() {
     client.loadVotedSubmissions(function(err) {
       assert.ifError(err);
       assert.ok(client.votedSubmissions);
+      assert.ok(client.votedSubmissions[0] instanceof client.Submission);
       done();
     });
   });

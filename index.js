@@ -13,6 +13,7 @@ module.exports = function(ENV) {
   client.Opportunity = require('./lib/opportunity')(ENV).Opportunity;
   client.OpportunitySeries = require('./lib/opportunity')(ENV).OpportunitySeries;
   client.User = require('./lib/user')(ENV);
+  client.Submission = require('./lib/submission')(ENV);
 
   client.get = get;
   client.post = post;
