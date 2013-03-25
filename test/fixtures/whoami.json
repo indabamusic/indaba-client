@@ -1,0 +1,31 @@
+{
+  "status": "success",
+  "message": null,
+  "data": {
+    "id": "6519747e-8e54-11e1-a401-1231390f6943",
+    "slug": "967756377",
+    "name": "Matt Haden",
+    "image_urls": {
+      "tiny": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/3347/steve_color_tiny.png",
+      "detail": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/3347/steve_color_detail.png",
+      "profile": "https://s3.amazonaws.com/ray-user-assets.indabamusic.com/media/3347/steve_color_profile.png"
+    },
+    "location_country_code": "VE",
+    "location_city": "Two",
+    "location_state": "NY",
+    "account_type": {
+      "name": "Basic",
+      "privileges": "basic"
+    },
+    "birthday": "1984-02-16",
+    "member_since": "2012-04-24T21:28:12+00:00",
+    "email": "steve@indabamusic.com",
+    "is_admin": true,
+    "may_submit_late": false,
+    "late_submission_expires_at": null,
+    "opportunity_keys": {
+      "used_keys": 3,
+      "remaining_keys": 0
+    }
+  }
+}

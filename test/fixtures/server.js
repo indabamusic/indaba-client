@@ -7,6 +7,10 @@ app.get('/users', function(req, resp) {
   resp.json(data);
 });
 
+app.get('/whoami', function(req, resp) {
+  resp.json(require('.' + req.path));
+});
+
 var port = process.env.INDABA_TEST_PORT;
 app.listen(port);
 console.log('test server on ' + port);
