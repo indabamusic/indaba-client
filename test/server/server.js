@@ -30,6 +30,10 @@ app.get('/in_browser', function(req, resp) {
 // Gets
 // ----
 
+app.get('/opportunities', function(req, resp) {
+  resp.json(fixture('opportunities'));
+});
+
 app.get('/users', function(req, resp) {
   resp.json(fixture('users'));
 });

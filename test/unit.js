@@ -25,12 +25,14 @@ beforeEach(function(done) {
 describe('client.get', function() {
   it('casts results to specified Model', function(done) {
     var req = {
-      path: '/users',
-      cast: client.User
+      path: '/opportunities',
+      cast: client.Opportunity
     };
     client.get(req, function(err, data) {
       assert.ifError(err);
-      assert.ok(data[0] instanceof client.User);
+      var opp = data[0];
+      assert.ok(opp instanceof client.Opportunity);
+      assert.equal(opp.getPhase(), 'submission');
       done();
     });
   });
