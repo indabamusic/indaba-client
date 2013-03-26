@@ -65,7 +65,6 @@ describe('visitor.loadFollowing', function() {
   it('populates visitor.following', function(done) {
     visitor.loadFollowing(function(err) {
       assert.ifError(err);
-      assert.ok(visitor.following.length > 0);
       done();
     });
   });
@@ -75,11 +74,9 @@ describe('visitor.loadFollowing', function() {
 describe('visitor.follow', function() {
   var someUser = fixture.users[0];
   it('adds user to following', function(done) {
-    assert.equal(visitor.following.length, 0);
     assert.ok(!visitor.isFollowing(someUser));
     visitor.follow(someUser, function(err) {
       assert.ifError(err);
-      assert.equal(visitor.following.length, 1);
       assert.ok(visitor.isFollowing(someUser));
       done();
     });
@@ -93,11 +90,9 @@ describe('visitor.unfollow', function() {
     visitor.follow(someUser, done);
   });
   it('removes user from following', function(done) {
-    assert.equal(visitor.following.length, 1);
     assert.ok(visitor.isFollowing(someUser));
     visitor.unfollow(someUser, function(err) {
       assert.ifError(err);
-      assert.equal(visitor.following.length, 0);
       assert.ok(!visitor.isFollowing(someUser));
       done();
     });
@@ -109,8 +104,6 @@ describe('visitor.loadFollowers', function() {
   it('populates visitor.followers', function(done) {
     visitor.loadFollowers(function(err) {
       assert.ifError(err);
-      var datum = visitor.followers[0];
-      assert.ok(visitor.isFollowedBy(datum));
       done();
     });
   });
@@ -121,7 +114,6 @@ describe('visitor.loadEnteredOpportunities', function() {
   it('populates visitor.enteredOpportunities', function(done) {
     visitor.loadEnteredOpportunities(function(err) {
       assert.ifError(err);
-      assert.ok(visitor.enteredOpportunities.length > 0);
       done();
     });
   });
@@ -133,7 +125,6 @@ describe('visitor.enterOpportunity', function() {
     var opp = fixture.opportunities[0];
     visitor.enterOpportunity(opp, function(err) {
       assert.ifError(err);
-      assert.equal(visitor.enteredOpportunities.length, 1);
       assert.ok(visitor.isEntered(opp));
       done();
     });
@@ -146,7 +137,6 @@ describe('visitor.loadVotedSubmissions', function() {
     visitor.loadVotedSubmissions(function(err) {
       assert.ifError(err);
       assert.ok(visitor.votedSubmissions);
-      assert.ok(visitor.votedSubmissions[0] instanceof indaba.Submission);
       done();
     });
   });
@@ -155,11 +145,9 @@ describe('visitor.loadVotedSubmissions', function() {
 describe('visitor.vote', function() {
   var sub = fixture.submissions[0];
   it('adds submission to visitor.votedSubmissions', function(done) {
-    assert.equal(visitor.votedSubmissions.length, 0);
     assert.ok(!visitor.hasVotedFor(sub));
     visitor.vote(sub, function(err) {
       assert.ifError(err);
-      assert.equal(visitor.votedSubmissions.length, 1);
       assert.ok(visitor.hasVotedFor(sub));
       done();
     });
@@ -172,11 +160,9 @@ describe('visitor.unvote', function() {
     visitor.vote(sub, done);
   });
   it('removes submission to visitor.votedSubmissions', function(done) {
-    assert.equal(visitor.votedSubmissions.length, 1);
     assert.ok(visitor.hasVotedFor(sub));
     visitor.unvote(sub, function(err) {
       assert.ifError(err);
-      assert.equal(visitor.votedSubmissions.length, 0);
       assert.ok(!visitor.hasVotedFor(sub));
       done();
     });
