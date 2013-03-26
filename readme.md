@@ -1,39 +1,39 @@
-Create a client with options:
+# Indaba
+
+Initialize `indaba` with ENV:
 
 * `dorianEndpoint`: required
 * `lydianEndpoint`: required
-* `token`: optional access token
 
 ```js
-client = require('indaba-client')({
+indaba = require('indaba-client')({
   dorianEndpoint: 'http://beta.indavelopment.com',
   lydianEndpoint: process.env.INDABA_TEST_ENDPOINT,
-  token: token
 });
 ```
 
-Client has our models:
+`indaba` has our models:
 
 ```js
-var opp = new client.Opportunity(opportunityJsonData);
+var opp = new indaba.Opportunity(opportunityJsonData);
 ```
 
 
 
+### Get Request:
 
-## Get Request:
-
-* `path`: required URL path (`/opportunities/`)
-* `query`: object used to build query string
-* `cast`: data or datum will be cast to this class (`client.Opportunity`)
+* `path`: **required** URL path
+* `token`: optional access token
+* `query`: optional query object
+* `cast`: optional class to wrap result(s)
 
 ```js
-client.get({
+indaba.get({
   path: '/opportunities',
   query: {
     limit: 10
   }
-  cast: client.Opportunity
+  cast: indaba.Opportunity
 }, function(err, data) {
   var opp = data[0];
   console.log("opp phase: ", opp.getPhase());
@@ -41,19 +41,35 @@ client.get({
 ```
 
 
-## Post Request:
+### Post Request:
 
-* `path`: required URL path
-* `body`: payload object of post request
-* `cast`: data or datum will be cast to this class
+* `path`: **required** URL path
+* `token`: **required** access token
+* `body`: optional payload
+* `cast`: optional class to wrap result(s)
 
 
 ```js
-client.post({
-  path: '/opportunities/xxx/enter'
+indaba.post({
+  path: '/opportunities/xxx/enter',
+  token: 'yyy'
 }, function(err) {
   if (!err) {
     console.log("you are entered!");
   }
 })
 ```
+
+
+## Visitor
+
+Stateful visitor session.  Instantiate with required token:
+
+```js
+var visitor = indaba.createVisitor(token);
+visitor.whoami(function(err) {
+  // visitor.currentUser is now set
+});
+```
+
+see `lib/visitor.js` for API
