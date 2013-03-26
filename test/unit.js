@@ -1,11 +1,14 @@
 var port = process.env.INDABA_TEST_PORT = 13352;
 var MAX_OFFSET = process.env.MAX_OFFSET = 100;
-var indabaClient = require('../index');
-
 var assert = require('assert');
 var testServer = require('./server/server');
 
-var client;
+var indaba = require('../index')({
+  dorianEndpoint: 'http://beta.indavelopment.com',
+  lydianEndpoint: 'http://localhost:' + port,
+});
+
+var visitor;
 var fixture = {
   users: require('./fixtures/users').data,
   opportunities: require('./fixtures/opportunities').data,
@@ -13,25 +16,21 @@ var fixture = {
 };
 
 beforeEach(function(done) {
-  client = indabaClient({
-    dorianEndpoint: 'http://beta.indavelopment.com',
-    lydianEndpoint: 'http://localhost:' + port,
-    token: 'test-token',
-    facebookToken: 'facebook-token'
-  });
-  client.whoami(done);
+  visitor = indaba.createVisitor('test-token');
+  visitor.facebookToken = 'facebook-token';
+  visitor.whoami(done);
 });
 
-describe('client.get', function() {
+describe('indaba.get', function() {
   it('casts results to specified Model', function(done) {
     var req = {
       path: '/opportunities',
-      cast: client.Opportunity
+      cast: indaba.Opportunity
     };
-    client.get(req, function(err, data) {
+    indaba.get(req, function(err, data) {
       assert.ifError(err);
       var opp = data[0];
-      assert.ok(opp instanceof client.Opportunity);
+      assert.ok(opp instanceof indaba.Opportunity);
       assert.equal(opp.getPhase(), 'submission');
       done();
     });
@@ -39,10 +38,10 @@ describe('client.get', function() {
   it('all option gets all the records', function(done) {
     var req = {
       path: '/users',
-      cast: client.User,
+      cast: indaba.User,
       all: true
     };
-    client.get(req, function(err, data) {
+    indaba.get(req, function(err, data) {
       assert.ifError(err);
       assert.equal(data.length, MAX_OFFSET);
       done();
@@ -51,134 +50,134 @@ describe('client.get', function() {
 });
 
 
-describe('whoami', function() {
+describe('visitor.whoami', function() {
   it('sets currentUser', function(done) {
-    client.whoami(function(err, currentUser) {
+    visitor.whoami(function(err, currentUser) {
       assert.ifError(err);
-      assert.equal(currentUser, client.currentUser);
+      assert.equal(currentUser, visitor.currentUser);
       done();
     });
   });
 });
 
 
-describe('client.loadFollowing', function() {
-  it('populates client.following', function(done) {
-    client.loadFollowing(function(err) {
+describe('visitor.loadFollowing', function() {
+  it('populates visitor.following', function(done) {
+    visitor.loadFollowing(function(err) {
       assert.ifError(err);
-      assert.ok(client.following.length > 0);
+      assert.ok(visitor.following.length > 0);
       done();
     });
   });
 });
 
 
-describe('client.follow', function() {
+describe('visitor.follow', function() {
   var someUser = fixture.users[0];
   it('adds user to following', function(done) {
-    assert.equal(client.following.length, 0);
-    assert.ok(!client.isFollowing(someUser));
-    client.follow(someUser, function(err) {
+    assert.equal(visitor.following.length, 0);
+    assert.ok(!visitor.isFollowing(someUser));
+    visitor.follow(someUser, function(err) {
       assert.ifError(err);
-      assert.equal(client.following.length, 1);
-      assert.ok(client.isFollowing(someUser));
+      assert.equal(visitor.following.length, 1);
+      assert.ok(visitor.isFollowing(someUser));
       done();
     });
   });
 });
 
 
-describe('client.unfollow', function() {
+describe('visitor.unfollow', function() {
   var someUser = fixture.users[8];
   beforeEach(function(done) {
-    client.follow(someUser, done);
+    visitor.follow(someUser, done);
   });
   it('removes user from following', function(done) {
-    assert.equal(client.following.length, 1);
-    assert.ok(client.isFollowing(someUser));
-    client.unfollow(someUser, function(err) {
+    assert.equal(visitor.following.length, 1);
+    assert.ok(visitor.isFollowing(someUser));
+    visitor.unfollow(someUser, function(err) {
       assert.ifError(err);
-      assert.equal(client.following.length, 0);
-      assert.ok(!client.isFollowing(someUser));
+      assert.equal(visitor.following.length, 0);
+      assert.ok(!visitor.isFollowing(someUser));
       done();
     });
   });
 });
 
 
-describe('client.loadFollowers', function() {
-  it('populates client.followers', function(done) {
-    client.loadFollowers(function(err) {
+describe('visitor.loadFollowers', function() {
+  it('populates visitor.followers', function(done) {
+    visitor.loadFollowers(function(err) {
       assert.ifError(err);
-      var datum = client.followers[0];
-      assert.ok(client.isFollowedBy(datum));
+      var datum = visitor.followers[0];
+      assert.ok(visitor.isFollowedBy(datum));
       done();
     });
   });
 });
 
 
-describe('client.loadEnteredOpportunities', function() {
-  it('populates client.enteredOpportunities', function(done) {
-    client.loadEnteredOpportunities(function(err) {
+describe('visitor.loadEnteredOpportunities', function() {
+  it('populates visitor.enteredOpportunities', function(done) {
+    visitor.loadEnteredOpportunities(function(err) {
       assert.ifError(err);
-      assert.ok(client.enteredOpportunities.length > 0);
+      assert.ok(visitor.enteredOpportunities.length > 0);
       done();
     });
   });
 });
 
 
-describe('client.enterOpportunity', function() {
+describe('visitor.enterOpportunity', function() {
   it('adds opportunity to your enteredOpportunities', function(done) {
     var opp = fixture.opportunities[0];
-    client.enterOpportunity(opp, function(err) {
+    visitor.enterOpportunity(opp, function(err) {
       assert.ifError(err);
-      assert.equal(client.enteredOpportunities.length, 1);
-      assert.ok(client.isEntered(opp));
+      assert.equal(visitor.enteredOpportunities.length, 1);
+      assert.ok(visitor.isEntered(opp));
       done();
     });
   });
 });
 
 
-describe('client.loadVotedSubmissions', function() {
-  it('populates client.votedSubmissions', function(done) {
-    client.loadVotedSubmissions(function(err) {
+describe('visitor.loadVotedSubmissions', function() {
+  it('populates visitor.votedSubmissions', function(done) {
+    visitor.loadVotedSubmissions(function(err) {
       assert.ifError(err);
-      assert.ok(client.votedSubmissions);
-      assert.ok(client.votedSubmissions[0] instanceof client.Submission);
+      assert.ok(visitor.votedSubmissions);
+      assert.ok(visitor.votedSubmissions[0] instanceof indaba.Submission);
       done();
     });
   });
 });
 
-describe('client.vote', function() {
+describe('visitor.vote', function() {
   var sub = fixture.submissions[0];
-  it('adds submission to client.votedSubmissions', function(done) {
-    assert.equal(client.votedSubmissions.length, 0);
-    assert.ok(!client.hasVotedFor(sub));
-    client.vote(sub, function(err) {
+  it('adds submission to visitor.votedSubmissions', function(done) {
+    assert.equal(visitor.votedSubmissions.length, 0);
+    assert.ok(!visitor.hasVotedFor(sub));
+    visitor.vote(sub, function(err) {
       assert.ifError(err);
-      assert.equal(client.votedSubmissions.length, 1);
-      assert.ok(client.hasVotedFor(sub));
+      assert.equal(visitor.votedSubmissions.length, 1);
+      assert.ok(visitor.hasVotedFor(sub));
       done();
     });
   });
 });
 
-describe('client.unvote', function() {
+describe('visitor.unvote', function() {
   var sub = fixture.submissions[0];
   beforeEach(function(done) {
-    client.vote(sub, done);
+    visitor.vote(sub, done);
   });
-  it('removes submission to client.votedSubmissions', function(done) {
-    assert.equal(client.votedSubmissions.length, 1);
-    assert.ok(client.hasVotedFor(sub));
-    client.unvote(sub, function(err) {
+  it('removes submission to visitor.votedSubmissions', function(done) {
+    assert.equal(visitor.votedSubmissions.length, 1);
+    assert.ok(visitor.hasVotedFor(sub));
+    visitor.unvote(sub, function(err) {
       assert.ifError(err);
-      assert.equal(client.votedSubmissions.length, 0);
-      assert.ok(!client.hasVotedFor(sub));
+      assert.equal(visitor.votedSubmissions.length, 0);
+      assert.ok(!visitor.hasVotedFor(sub));
       done();
     });
   });
