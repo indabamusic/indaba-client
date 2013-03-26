@@ -1,6 +1,6 @@
 {
   "name": "indaba-client",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "JavaScript client for the Indaba Music SDK",
   "main": "index.js",
   "scripts": {
