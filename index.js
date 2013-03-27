@@ -22,9 +22,6 @@ module.exports = function(ENV) {
 
   return indaba;
 
-
-  ////////// private //////////
-
   // Get
   // ---
   function get(getConfig, cb) {
