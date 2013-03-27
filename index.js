@@ -17,6 +17,9 @@ module.exports = function(ENV) {
   client.get = get;
   client.post = post;
 
+  client.getAll = getAll;
+  client.fasterGetAll = fasterGetAll;
+
 
   // Get
   // ---
@@ -66,6 +69,59 @@ module.exports = function(ENV) {
         });
       }
     });
+  }
+
+  function fasterGetAll(getConfig, cb) {
+    getConfig.query = getConfig.query || {};
+    getConfig.query.offset = 0;
+
+    var allData = [];
+    var finished = false;
+    var cursor = 0;
+    var numOpen = 0;
+    var MAX_OPEN = 5;
+    var PAGE_SIZE = 50;
+
+    while (numOpen < MAX_OPEN) {
+      openRequest(cursor);
+      cursor += PAGE_SIZE;
+    }
+
+    function openRequest(offset) {
+      console.log("opening", offset);
+      numOpen += 1;
+      getConfig.query.offset = offset;
+      getConfig.query.limit = PAGE_SIZE;
+      get(getConfig, function(err, page) {
+        if (err) return handleError(err);
+        if (page.length === 0) {
+          finished = true;
+        }
+        else {
+          for (var i = 0; i < page.length; i++) {
+            allData[offset + i] = page[i];
+          }
+        }
+        requestFinished();
+      });
+    }
+
+    function requestFinished() {
+      numOpen -= 1;
+      if (!finished && numOpen < MAX_OPEN) {
+        openRequest(cursor);
+        cursor += PAGE_SIZE;
+      }
+      if (finished && numOpen === 0) {
+        cb(null, allData);
+      }
+    }
+
+    function handleError(err) {
+      console.error('fuuuuuuuu', err);
+      cb(err);
+    }
+
   }
 
   // Post
