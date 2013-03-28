@@ -4,21 +4,24 @@ module.exports = function(ENV) {
   if (!ENV || !ENV.lydianEndpoint) throw new Error("lydianEndpoint is required");
   if (!ENV.dorianEndpoint) throw new Error("dorianEndpoint is required");
 
-  var client = {};
-  client.ENV = ENV;
+  var indaba = {};
+  indaba.ENV = ENV;
 
-  // Models
-  // ------
-  client.Opportunity = require('./lib/opportunity')(ENV).Opportunity;
-  client.OpportunitySeries = require('./lib/opportunity')(ENV).OpportunitySeries;
-  client.User = require('./lib/user')(ENV);
-  client.Submission = require('./lib/submission')(ENV);
+  indaba.Opportunity = require('./lib/opportunity')(ENV).Opportunity;
+  indaba.OpportunitySeries = require('./lib/opportunity')(ENV).OpportunitySeries;
+  indaba.User = require('./lib/user')(ENV);
+  indaba.Submission = require('./lib/submission')(ENV);
 
-  client.get = get;
-  client.post = post;
+  indaba.get = get;
+  indaba.post = post;
+  indaba.getAll = getAll;
 
-  client.getAll = getAll;
+  indaba.createVisitor = function(token) {
+    if (!token) throw new Error('token is required');
+    return require('./lib/visitor')(indaba, token);
+  };
 
+  return indaba;
 
   // Get
   // ---
@@ -27,7 +30,7 @@ module.exports = function(ENV) {
     var urlString = ENV.lydianEndpoint + getConfig.path;
     var request = superagent.get(urlString);
     var query = getConfig.query || {};
-    query.access_token = query.access_token || ENV.token;
+    query.access_token = query.access_token || getConfig.token;
     request.query(query);
     request.end(function(err, resp) {
       if (err) {
@@ -108,10 +111,10 @@ module.exports = function(ENV) {
   // ----
   function post(postConfig, cb) {
     if (!postConfig || !postConfig.path) throw new Error('path is required');
-    if (!ENV.token) throw new Error('token is required');
+    if (!postConfig.token) throw new Error('token is required');
     var urlString = ENV.lydianEndpoint + postConfig.path;
     var request = superagent.post(urlString);
-    request.set('Authorization', "Bearer " + ENV.token);
+    request.set('Authorization', "Bearer " + postConfig.token);
     request.send(postConfig.body);
     request.end(function(err, resp) {
       if (err) {
@@ -127,209 +130,7 @@ module.exports = function(ENV) {
   }
 
 
-  // whoami
-  // ------
-  client.whoami = function whoami(cb) {
-    var request = {
-      path: '/whoami',
-      cast: client.User
-    };
-    get(request, function(err, user) {
-      if (err) return cb(err);
-      client.currentUser = user;
-      cb(null, client.currentUser);
-    });
-  };
-
-
-
-  /**
-   * client.following
-   *
-   * stores following for current user
-   */
-  client.following = [];
-
-  client.loadFollowing = function loadFollowing(cb) {
-    if (!client.currentUser) cb(new Error('client.currentUser is required. Call client.whoami first.'));
-    var request = {
-      path: "/users/" + client.currentUser.slug + "/follows",
-      cast: client.User,
-      all: true
-    };
-    get(request, function(err, following) {
-      if (err) return cb(err);
-      following.forEach(function(item) {
-        client.following.push(item);
-      });
-      cb(null);
-    });
-  };
-
-  client.isFollowing = function(user) {
-    var index = _indexOfId(client.following, user.id);
-    return (index > -1);
-  };
-
-  client.follow = function follow(user, cb) {
-    var request = {
-      path: "/users/" + user.slug + "/follow"
-    };
-    post(request, function(err) {
-      if (err) {
-        return cb(err);
-      }
-      client.following.push(user);
-      cb(null);
-    });
-  };
-
-  client.unfollow = function unfollow(user, cb) {
-    var request = {
-      path: "/users/" + user.slug + "/unfollow"
-    };
-    post(request, function(err) {
-      if (err) return cb(err);
-      var index = _indexOfId(client.following, user.id);
-      if (index > -1) {
-        client.following.splice(index, 1);
-      }
-      cb(null);
-    });
-  };
-
-
-  client.followers = [];
-  client.loadFollowers = function(cb) {
-    if (!client.currentUser) cb(new Error('client.currentUser is required. Call client.whoami first.'));
-    var request = {
-      path: "/users/" + client.currentUser.slug + "/followers",
-      cast: client.User,
-      all: true
-    };
-    get(request, function(err, data) {
-      if (err) return cb(err);
-      data.forEach(function(item) {
-        client.followers.push(item);
-      });
-      cb(null);
-    });
-  };
-  client.isFollowedBy = function(user) {
-    return (client.followers.indexOf(user) > -1);
-  };
-
-  /**
-   * enteredOpportunities
-   *
-   */
-
-  client.enteredOpportunities = [];
-
-  client.loadEnteredOpportunities = function(cb) {
-    var request = {
-      path: "/whoami/entered_opportunities",
-      cast: client.Opportunity,
-      all: true
-    };
-    get(request, function(err, data) {
-      if (err) return cb(err);
-      data.forEach(function(item) {
-        client.enteredOpportunities.push(item);
-      });
-      cb(null);
-    });
-  };
-
-  client.enterOpportunity = function(opp, cb) {
-    var request = {
-      path: "/opportunities/" + opp.slug + "/enter"
-    };
-    post(request, function(err) {
-      if (err) return cb(err);
-      client.enteredOpportunities.push(opp);
-      cb(null);
-    });
-  };
-
-  client.isEntered = function(opp, cb) {
-    return (_indexOfId(client.enteredOpportunities, opp.id) > -1);
-  };
-
-
-  /**
-   * Voting
-   *
-   */
-
-  client.votedSubmissions = [];
-
-  client.loadVotedSubmissions = function(query, cb) {
-    if (!cb) {
-      cb = query;
-      query = {};
-    }
-    var request = {
-      path: "/whoami/voted_submissions",
-      query: query,
-      cast: client.Submission,
-      all: true
-    };
-    get(request, function(err, data) {
-      data.forEach(function(item) {
-        client.votedSubmissions.push(item);
-      });
-      cb(null);
-    });
-  };
-
-  client.vote = function(submission, cb) {
-    if (!ENV.facebookToken) return cb(new Error("client.ENV.facebookToken is required"));
-    var request = {
-      path: "/submissions/" + submission.id + "/vote",
-      body: {
-        facebook_token: client.ENV.facebookToken
-      }
-    };
-    post(request, function(err) {
-      if (err) return cb(err);
-      client.votedSubmissions.push(submission);
-      cb(null);
-    });
-  };
-
-  client.unvote = function(submission, cb) {
-    if (!ENV.facebookToken) return cb(new Error("client.ENV.facebookToken is required"));
-    var request = {
-      path: "/submissions/" + submission.id + "/unvote",
-      body: {
-        facebook_token: client.ENV.facebookToken
-      }
-    };
-    post(request, function(err) {
-      if (err) return cb(err);
-      var index = _indexOfId(client.votedSubmissions, submission.id);
-      if (index > -1) {
-        client.votedSubmissions.splice(index, 1);
-      }
-      cb(null);
-    });
-  };
-
-  client.hasVotedFor = function(submission, cb) {
-    var index = _indexOfId(client.votedSubmissions, submission.id);
-    return (index > -1);
-  };
-
-
-  // Public Interface
-  // ----------------
-  return client;
-
-
-  // Util
-  // ----
-
+  // cast util
   function _cast(Model, data) {
     if (!Model) return data;
     if (Array.isArray(data)) {
@@ -343,13 +144,4 @@ module.exports = function(ENV) {
   }
 
 
-  function _indexOfId(array, id) {
-    for (var i = 0; i < array.length; ++i) {
-      var item = array[i];
-      if (item.id == id) {
-        return i;
-      }
-    }
-    return -1;
-  }
 };
