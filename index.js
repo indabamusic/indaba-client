@@ -14,11 +14,7 @@ module.exports = function(ENV) {
 
   indaba.get = get;
   indaba.post = post;
-
-  indaba.createVisitor = function(token) {
-    if (!token) throw new Error('token is required');
-    return require('./lib/visitor')(indaba, token);
-  };
+  indaba.getAll = getAll;
 
   return indaba;
 
@@ -26,7 +22,6 @@ module.exports = function(ENV) {
   // ---
   function get(getConfig, cb) {
     if (!getConfig || !getConfig.path) throw new Error('path is required');
-    if (getConfig.all) return getAll(getConfig, cb);
     var urlString = ENV.lydianEndpoint + getConfig.path;
     var request = superagent.get(urlString);
     var query = getConfig.query || {};
@@ -50,26 +45,61 @@ module.exports = function(ENV) {
     });
   }
 
+
   // getAll
   // ------
   function getAll(getConfig, cb) {
-    getConfig.all = false;
     getConfig.query = getConfig.query || {};
-    get(getConfig, function(err, page) {
-      if (err) return cb(err);
-      if (page.length === 0) {
-        cb(null, page);
+    getConfig.query.offset = 0;
+
+    var allData = [];
+    var finished = false;
+    var cursor = 0;
+    var numOpen = 0;
+
+    var MAX_OPEN = getConfig.MAX_OPEN || 5;
+    var PAGE_SIZE = getConfig.PAGE_SIZE || 50;
+
+    while (numOpen < MAX_OPEN) {
+      openRequest(cursor);
+      cursor += PAGE_SIZE;
+    }
+
+    function openRequest(offset) {
+      console.log("offset", offset);
+      numOpen += 1;
+      getConfig.query.offset = offset;
+      getConfig.query.limit = PAGE_SIZE;
+      get(getConfig, function(err, page) {
+        if (err) return handleError(err);
+        if (page.length === 0) {
+          finished = true;
+        }
+        else {
+          for (var i = 0; i < page.length; i++) {
+            allData[offset + i] = page[i];
+          }
+        }
+        requestFinished();
+      });
+    }
+
+    function requestFinished() {
+      numOpen -= 1;
+      if (!finished && numOpen < MAX_OPEN) {
+        openRequest(cursor);
+        cursor += PAGE_SIZE;
       }
-      else {
-        getConfig.query.offset = (getConfig.query.offset || 0) + page.length;
-        getAll(getConfig, function(err, nextPage) {
-          nextPage.forEach(function(datum) {
-            page.push(datum);
-          });
-          cb(null, page);
-        });
+      if (finished && numOpen === 0) {
+        cb(null, allData);
       }
-    });
+    }
+
+    function handleError(err) {
+      console.error('getAll failed', err.stack);
+      cb(err);
+    }
+
   }
 
   // Post
