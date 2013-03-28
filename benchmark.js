@@ -1,18 +1,12 @@
-var assert = require('assert');
-
-var Batch = require('batch');
-
 var indaba = require('./index')({
   lydianEndpoint: 'https://lydian.indabamusic.com',
   dorianEndpoint: 'https://beta.indabamusic.com',
 });
 
-var opp, path;
-opp = 'electronica-oasis-indaba-music-spotlight-5';
-opp = 'magnetic-music-festival-performance-opportunity';
-path = '/opportunities/' + opp + '/submissions';
+var path = process.argv[2] || '/opportunities/magnetic-music-festival-performance-opportunity/submissions';
 
 
+var Batch = require('batch');
 var batch = new Batch();
 batch.concurrency(1);
 
@@ -30,6 +24,18 @@ var configs = [
   },
   {
     path: path,
+    MAX_OPEN: 3,
+  },
+  {
+    path: path,
+    MAX_OPEN: 2,
+  },
+  {
+    path: path,
+    MAX_OPEN: 1,
+  },
+  {
+    path: path,
     MAX_OPEN: 1,
     PAGE_SIZE: 25,
   },
@@ -39,15 +45,11 @@ configs.forEach(function(config) {
   var description = JSON.stringify(config);
   batch.push(function(done) {
     var timer = makeTimer(description, done);
-    indaba.fasterGetAll(config, timer);
+    indaba.getAll(config, timer);
   });
 });
 
-batch.end(function(err, stuff) {
-  //base case
-  var timer = makeTimer('traditional');
-  indaba.getAll({path: path}, timer);
-});
+batch.end();
 
 
 ////

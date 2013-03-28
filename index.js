@@ -18,14 +18,12 @@ module.exports = function(ENV) {
   client.post = post;
 
   client.getAll = getAll;
-  client.fasterGetAll = fasterGetAll;
 
 
   // Get
   // ---
   function get(getConfig, cb) {
     if (!getConfig || !getConfig.path) throw new Error('path is required');
-    if (getConfig.all) return getAll(getConfig, cb);
     var urlString = ENV.lydianEndpoint + getConfig.path;
     var request = superagent.get(urlString);
     var query = getConfig.query || {};
@@ -49,30 +47,10 @@ module.exports = function(ENV) {
     });
   }
 
+
   // getAll
   // ------
   function getAll(getConfig, cb) {
-    getConfig.all = false;
-    getConfig.query = getConfig.query || {};
-    get(getConfig, function(err, page) {
-      if (err) return cb(err);
-      if (page.length === 0) {
-        cb(null, page);
-      }
-      else {
-        getConfig.query.offset = (getConfig.query.offset || 0) + page.length;
-        console.log("offset", getConfig.query.offset);
-        getAll(getConfig, function(err, nextPage) {
-          nextPage.forEach(function(datum) {
-            page.push(datum);
-          });
-          cb(null, page);
-        });
-      }
-    });
-  }
-
-  function fasterGetAll(getConfig, cb) {
     getConfig.query = getConfig.query || {};
     getConfig.query.offset = 0;
 
@@ -120,7 +98,7 @@ module.exports = function(ENV) {
     }
 
     function handleError(err) {
-      console.error('fuuuuuuuu', err);
+      console.error('getAll failed', err.stack);
       cb(err);
     }
 
