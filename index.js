@@ -66,7 +66,6 @@ module.exports = function(ENV) {
     }
 
     function openRequest(offset) {
-      console.log("offset", offset);
       numOpen += 1;
       getConfig.query.offset = offset;
       getConfig.query.limit = PAGE_SIZE;
