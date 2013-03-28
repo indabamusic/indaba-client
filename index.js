@@ -61,6 +61,7 @@ module.exports = function(ENV) {
       }
       else {
         getConfig.query.offset = (getConfig.query.offset || 0) + page.length;
+        console.log("offset", getConfig.query.offset);
         getAll(getConfig, function(err, nextPage) {
           nextPage.forEach(function(datum) {
             page.push(datum);
@@ -79,8 +80,9 @@ module.exports = function(ENV) {
     var finished = false;
     var cursor = 0;
     var numOpen = 0;
-    var MAX_OPEN = 5;
-    var PAGE_SIZE = 50;
+
+    var MAX_OPEN = getConfig.MAX_OPEN || 5;
+    var PAGE_SIZE = getConfig.PAGE_SIZE || 50;
 
     while (numOpen < MAX_OPEN) {
       openRequest(cursor);
@@ -88,7 +90,7 @@ module.exports = function(ENV) {
     }
 
     function openRequest(offset) {
-      console.log("opening", offset);
+      console.log("offset", offset);
       numOpen += 1;
       getConfig.query.offset = offset;
       getConfig.query.limit = PAGE_SIZE;
