@@ -16,11 +16,6 @@ module.exports = function(ENV) {
   indaba.post = post;
   indaba.getAll = getAll;
 
-  indaba.createVisitor = function(token) {
-    if (!token) throw new Error('token is required');
-    return require('./lib/visitor')(indaba, token);
-  };
-
   return indaba;
 
   // Get
