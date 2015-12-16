@@ -63,6 +63,7 @@ module.exports = function(ENV) {
       else {
         getConfig.query.offset = (getConfig.query.offset || 0) + page.length;
         getAll(getConfig, function(err, nextPage) {
+          if (err) return cb(err);
           nextPage.forEach(function(datum) {
             page.push(datum);
           });
